@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600;800&family=Montserrat:wght@300;400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Montserrat', sans-serif;
+  --font-display: 'Montserrat Alternates', sans-serif;
+
+  --color-dragusheen-deep: #0f0c15;
+  --color-dragusheen-surface: rgba(255, 255, 255, 0.05);
+  --color-dragusheen-primary: #7b2cbf;
+  --color-dragusheen-glow: #9d4edd;
+  --color-dragusheen-secondary: #ff006e;
+  --color-dragusheen-accent: #4cc9f0;
+  --color-dragusheen-text: #f8f9fa;
+  --color-dragusheen-muted: #b1a7d1;
+
+  --shadow-neon: 0 8px 32px 0 rgba(123, 44, 191, 0.2);
+
+  --image-deep-gradient: linear-gradient(to bottom right, #0f0c15, #1a1625);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-dragusheen-deep text-dragusheen-text font-sans antialiased overflow-x-hidden;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+@utility glass-panel {
+  @apply bg-dragusheen-surface backdrop-blur-xl border border-white/10 shadow-xl rounded-2xl transition-all duration-300;
+}
+
+@utility glass-panel-hover {
+  @apply hover:bg-white/10 hover:-translate-y-1 hover:shadow-neon;
+}
+
+@utility section-container {
+  @apply h-screen w-screen snap-start relative flex items-center justify-center overflow-hidden;
+}

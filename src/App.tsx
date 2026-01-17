@@ -1,3 +1,13 @@
+/*
+  Authors:
+  >> Nathan TIROLF - { nathan.tirolf@epitech.eu }
+
+  („• ֊ •„)❤  <  Have a good day !
+  --U-----U------------------------
+*/
+
+
+/* ----- COMPONENT ----- */
 function App() {
   return (
     <div className="section-container bg-dragusheen-deep">
@@ -13,4 +23,6 @@ function App() {
   )
 }
 
+
+/* ----- EXPORTS ----- */
 export default App

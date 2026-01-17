@@ -41,3 +41,28 @@ body {
 @utility section-container {
   @apply h-screen w-screen snap-start relative flex items-center justify-center overflow-hidden;
 }
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-dragusheen-text);
+  }
+
+  h1 {
+    @apply text-5xl md:text-7xl;
+  }
+  
+  h2 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl text-dragusheen-primary;
+  }
+  
+  p {
+    @apply text-dragusheen-muted leading-relaxed;
+  }
+}

@@ -9,6 +9,7 @@
 /* ----- IMPORTS ----- */
 import AnimatedBackground from "./AnimatedBackground";
 import type { IPageConfig } from "@/types/PageConfig";
+import Navbar from "./Navbar/Navbar";
 
 
 /* ----- PROPS ----- */
@@ -22,6 +23,8 @@ function Layout({ children }: LayoutProps) {
 	return (
 		<>
 			<AnimatedBackground />
+
+			{children.displayNavBar && <Navbar />}
 
 			<main>
 				<children.content />

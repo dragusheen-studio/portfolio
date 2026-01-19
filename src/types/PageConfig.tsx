@@ -17,5 +17,5 @@ export interface IPageConfig {
 	path: string;
 	content: React.FC;
 	displayInNavBar: boolean;
-	displayNavBar: boolean;
+	displayLayout: boolean;
 }

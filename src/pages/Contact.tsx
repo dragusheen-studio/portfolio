@@ -8,7 +8,7 @@
 
 import Badge from "@/components/ui/Badge";
 
-function Contact() {
+function ContactPage() {
     return (
         <section className="section-container">
             <div className="glass-panel p-12 text-center">
@@ -20,4 +20,4 @@ function Contact() {
     );
 }
 
-export default Contact;
+export default ContactPage;

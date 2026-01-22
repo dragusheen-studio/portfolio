@@ -66,3 +66,12 @@ body {
     @apply text-dragusheen-muted leading-relaxed;
   }
 }
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.animate-cursor {
+  border-right: 4px solid #7b2cbf; /* Ta couleur primary */
+  animation: blink 0.75s step-end infinite;
+}

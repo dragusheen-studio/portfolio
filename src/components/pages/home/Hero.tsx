@@ -16,8 +16,7 @@ import { useTypewriter } from "@/hooks/TypeWritterEffect";
 
 
 /* ----- COMPONENT ----- */
-function Hero() {
-	// Utilisation du hook
+function HomeHero() {
 	const typewrittenText = useTypewriter(["Dragusheen", "Nathan Tirolf"], 150, 100, 2000);
 
 	return (
@@ -114,4 +113,4 @@ function Hero() {
 
 
 /* ----- EXPORTS ----- */
-export default Hero;
+export default HomeHero;

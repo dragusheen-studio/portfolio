@@ -1,7 +1,6 @@
 /*
 	Authors:
 	>> Nathan TIROLF - { nathan.tirolf@epitech.eu }
-	>> Daniil Stepanov - { daniil.stepanov@epitech.eu }
 
 	(„• ֊ •„)❤  <  Have a good day !
 	--U-----U------------------------

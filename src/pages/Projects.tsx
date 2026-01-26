@@ -8,7 +8,7 @@
 
 import Badge from "@/components/ui/Badge";
 
-function Projects() {
+function ProjectsPage() {
 	return (
 		<section className="section-container">
 			<div className="glass-panel p-12 text-center">
@@ -20,4 +20,4 @@ function Projects() {
 	);
 }
 
-export default Projects;
+export default ProjectsPage;

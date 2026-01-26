@@ -12,7 +12,16 @@ import type { IWebsiteConfig } from "@/types/WebsiteConfig";
 
 
 /* ----- DATAS ----- */
-export const WebsiteConfigDatas: IWebsiteConfig = {
+const WebsiteConfigDatas: IWebsiteConfig = {
 	siteName: "Dragusheen",
 	iconLink: "/svg/icon.svg",
 }
+
+/* ----- FUNCTIONS ----- */
+function GetWebsiteConfigDatas() {
+	return WebsiteConfigDatas;
+}
+
+
+/* ----- EXPORTS ----- */
+export { GetWebsiteConfigDatas };

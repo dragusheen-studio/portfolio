@@ -11,12 +11,12 @@
 import { Route, Routes } from "react-router-dom";
 import type { IPageConfig } from "@/types/PageConfig";
 
-import Project from "@/pages/Projects";
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
-import NotFound from "@/pages/NotFound";
-import Home from "@/pages/Home";
 import Layout from "@/components/layout/Layout";
+import HomePage from "@/pages/Home";
+import AboutPage from "@/pages/About";
+import ProjectsPage from "@/pages/Projects";
+import ContactPage from "@/pages/Contact";
+import NotFoundPage from "@/pages/NotFound";
 
 
 /* ----- DATAS ----- */
@@ -24,35 +24,35 @@ const PagesDatas: IPageConfig[] = [
 	{
 		name: "Accueil",
 		path: "/",
-		content: Home,
+		content: HomePage,
 		displayInNavBar: true,
 		displayLayout: true,
 	},
 	{
 		name: "Projets",
 		path: "/projects",
-		content: Project,
+		content: ProjectsPage,
 		displayInNavBar: true,
 		displayLayout: true,
 	},
 	{
 		name: "Parcours",
 		path: "/about",
-		content: About,
+		content: AboutPage,
 		displayInNavBar: true,
 		displayLayout: true,
 	},
 	{
 		name: "Contact",
 		path: "/contact",
-		content: Contact,
+		content: ContactPage,
 		displayInNavBar: true,
 		displayLayout: true,
 	},
 	{
 		name: "NotFound",
 		path: "*",
-		content: NotFound,
+		content: NotFoundPage,
 		displayInNavBar: false,
 		displayLayout: false,
 	},

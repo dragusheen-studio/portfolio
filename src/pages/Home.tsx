@@ -9,7 +9,7 @@
 
 /* ----- IMPORTS ----- */
 import BentoGrid from "@/components/pages/home/BentoGrid/BentoGrid";
-import Hero from "@/components/pages/home/Hero";
+import HomeHero from "@/components/pages/home/Hero";
 import React from "react";
 
 
@@ -17,7 +17,7 @@ import React from "react";
 const HomePage: React.FC = () => {
 	return (
 		<div className="flex flex-col w-full">
-			<Hero />
+			<HomeHero />
 			<BentoGrid />
 		</div>
 	);

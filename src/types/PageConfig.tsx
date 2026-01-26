@@ -12,10 +12,14 @@ import React from 'react';
 
 
 /* ----- TYPE ----- */
-export interface IPageConfig {
+interface IPageConfig {
 	name: string;
 	path: string;
 	content: React.FC;
 	displayInNavBar: boolean;
 	displayLayout: boolean;
 }
+
+
+/* ----- EXPORTS ----- */
+export type { IPageConfig };

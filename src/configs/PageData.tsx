@@ -11,7 +11,6 @@
 import { Route, Routes } from "react-router-dom";
 import type { IPageConfig } from "@/types/PageConfig";
 
-import Project from "@/pages/Projects";
 import Layout from "@/components/layout/Layout";
 import HomePage from "@/pages/Home";
 import AboutPage from "@/pages/About";

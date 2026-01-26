@@ -8,7 +8,10 @@
 
 
 /* ----- TYPE ----- */
-export interface IWebsiteConfig {
+interface IWebsiteConfig {
 	siteName: string;
 	iconLink: string;
 };
+
+/* ----- EXPORTS ----- */
+export type { IWebsiteConfig };

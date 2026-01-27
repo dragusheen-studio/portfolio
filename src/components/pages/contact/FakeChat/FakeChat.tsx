@@ -55,7 +55,6 @@ function FakeChat() {
 		const createNewMessage = () => {
 			addNewMessage(getNewMessage());
 			currentTurn.current = currentTurn.current === 'left' ? 'right' : 'left';
-			console.log(nextId.current);
 		}
 
 		const chatLoop = () => {

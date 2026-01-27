@@ -18,7 +18,7 @@ import FakeChat from "./FakeChat/FakeChat";
 /* ----- COMPONENT ----- */
 function ContactHero() {
 	return (
-		<section className="relative w-full min-h-[85vh] flex items-center justify-center px-4 md:px-8 py-20">
+		<section className="relative w-full min-h-screen flex items-center justify-center px-4 md:px-8 py-20">
 
 			<div className="container max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 				<motion.div

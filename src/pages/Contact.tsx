@@ -8,6 +8,7 @@
 
 
 /* ----- IMPORTS ----- */
+import ContactGrid from "@/components/pages/contact/ContactGrid/ContactGrid";
 import ContactHero from "@/components/pages/contact/Hero";
 
 
@@ -16,6 +17,7 @@ function Contact() {
     return (
         <div className="w-full flex flex-col">
             <ContactHero />
+            <ContactGrid />
         </div>
     );
 }

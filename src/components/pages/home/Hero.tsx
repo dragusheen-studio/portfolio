@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-import { useTypewriter } from "@/hooks/TypeWritterEffect";
+import { useTypewriter } from "@/services/TypeWritterEffect";
 
 
 /* ----- COMPONENT ----- */

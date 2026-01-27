@@ -10,6 +10,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { GetPagesInNavBar } from "@/configs/PageData";
 import NavBarFixedList from "@/components/layout/Navbar/NavBarFixedList";
+import { scrollToTop } from "@/services/scroll";
 
 
 /* ----- COMPONENT ----- */
@@ -36,6 +37,7 @@ function NavbarLaptop() {
 									: "text-dragusheen-muted hover:text-dragusheen-text hover:bg-white/5"
 								}
                                 `}
+							onClick={scrollToTop}
 						>
 							{page.name}
 						</Link>

@@ -6,18 +6,22 @@
     --U-----U------------------------
 */
 
-import Badge from "@/components/ui/Badge";
 
-function ContactPage() {
+/* ----- IMPORTS ----- */
+import ContactGrid from "@/components/pages/contact/ContactGrid/ContactGrid";
+import ContactHero from "@/components/pages/contact/Hero";
+
+
+/* ----- COMPONENT ----- */
+function Contact() {
     return (
-        <section className="section-container">
-            <div className="glass-panel p-12 text-center">
-                <Badge className="mb-4">On discute ?</Badge>
-                <h1 className="text-dragusheen-primary mb-4">Me Contacter</h1>
-                <p>Liens Pro, Github et Réseaux sociaux.</p>
-            </div>
-        </section>
+        <div className="w-full flex flex-col">
+            <ContactHero />
+            <ContactGrid />
+        </div>
     );
 }
 
-export default ContactPage;
+
+/* ----- EXPORTS ----- */
+export default Contact;

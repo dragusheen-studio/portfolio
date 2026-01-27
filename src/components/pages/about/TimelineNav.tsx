@@ -8,6 +8,7 @@
 
 
 /* ----- IMPORTS ----- */
+import { scrollToElement } from "@/services/scroll";
 import type { ITimelineChapter } from "@/types/TimelineChapter";
 
 
@@ -20,18 +21,10 @@ interface TimelineNavProps {
 
 /* ----- COMPONENT ----- */
 function TimelineNav({ chapters, activeId }: TimelineNavProps) {
-	const scrollToId = (id: string) => {
-		const element = document.getElementById(id);
-		if (element) {
-			const y = element.getBoundingClientRect().top + window.scrollY - 100;
-			window.scrollTo({ top: y, behavior: 'smooth' });
-		}
-	};
-
 	return (
 		<div className="fixed right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col gap-4 items-end pointer-events-auto">
 			<button
-				onClick={() => scrollToId("hero-section")}
+				onClick={() => scrollToElement("hero-section")}
 				className="group flex items-center gap-3 focus:outline-none"
 			>
 				<span className={`
@@ -48,7 +41,7 @@ function TimelineNav({ chapters, activeId }: TimelineNavProps) {
 			{chapters.map((chapter) => (
 				<button
 					key={chapter.id}
-					onClick={() => scrollToId(`chapter-${chapter.id}`)}
+					onClick={() => scrollToElement(`chapter-${chapter.id}`)}
 					className="group flex items-center gap-3 focus:outline-none"
 				>
 					<span className={`

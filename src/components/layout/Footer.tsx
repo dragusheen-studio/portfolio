@@ -11,6 +11,7 @@
 import { GetPagesInNavBar } from "@/configs/PageData";
 import { Link } from "react-router-dom";
 import Badge from "../ui/Badge";
+import { scrollToTop } from "@/services/scroll";
 
 
 /* ----- COMPONENT ----- */
@@ -23,11 +24,6 @@ function Footer() {
 		{ name: "LinkedIn", url: "https://www.linkedin.com/in/nathan-tirolf/" },
 		{ name: "Email", url: "mailto:nathan.tirolf@epitech.eu" }
 	];
-
-	const scrollToTop = () => {
-		window.scrollTo({ top: 0, behavior: "smooth" });
-	};
-
 
 	return (
 		<footer className="w-full py-8 relative z-10 pointer-events-none flex justify-center overflow-hidden">

@@ -13,6 +13,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { GetPagesInNavBar } from "@/configs/PageData";
 import NavBarFixedList from "./NavBarFixedList";
 import BurgerMenu from "./BurgerMenu";
+import { scrollToTop } from "@/services/scroll";
 
 
 /* ----- COMPONENT ----- */
@@ -26,6 +27,12 @@ function NavbarMobile() {
 	useEffect(() => {
 		document.body.style.overflow = isOpen ? "hidden" : "unset";
 	}, [isOpen]);
+
+	const clickOnLink = () => {
+		setIsOpen(false);
+		scrollToTop();
+	};
+
 
 	return (
 		<>
@@ -54,7 +61,7 @@ function NavbarMobile() {
 								>
 									<Link
 										to={page.path}
-										onClick={() => setIsOpen(false)}
+										onClick={clickOnLink}
 										className={`
                                             font-display text-3xl font-bold transition-colors
                                             ${isLinkActive(page.path) ? "text-dragusheen-primary" : "text-dragusheen-muted"}

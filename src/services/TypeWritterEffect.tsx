@@ -11,7 +11,7 @@
 import { useState, useEffect } from "react";
 
 
-/* ----- HOOKS ----- */
+/* ----- FUNCTIONS ----- */
 function useTypewriter(words: string[], typingSpeed = 150, deletingSpeed = 100, pauseTime = 2000) {
 	const [text, setText] = useState("");
 	const [isDeleting, setIsDeleting] = useState(false);

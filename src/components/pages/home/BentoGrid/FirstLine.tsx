@@ -10,7 +10,7 @@
 /* ----- IMPORTS ----- */
 import BentoCard from "@/components/layout/BentoCard";
 import Badge from "@/components/ui/Badge";
-import FakeTerminal from "@/components/display/FakeTerminal";
+import FakeTerminal from "@/components/pages/home/BentoGrid/FakeTerminal";
 
 
 /* --- COMPONENT --- */

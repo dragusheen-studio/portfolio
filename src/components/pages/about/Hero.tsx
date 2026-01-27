@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import { Link } from "react-router-dom";
-import FakeCV from "@/components/display/FakeCV";
+import FakeCV from "@/components/pages/about/FakeCV";
 
 function AboutHero() {
     return (

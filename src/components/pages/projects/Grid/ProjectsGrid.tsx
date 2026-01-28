@@ -8,28 +8,62 @@
 
 
 /* ----- IMPORTS ----- */
+import { useState } from "react";
 import { GetProjects } from "@/configs/Projects";
 import ProjectPresentationCard from "./ProjectPresentationCard";
+import { AnimatePresence, motion } from "framer-motion";
+import type { IProject } from "@/types/Project";
+import ProjectSearch from "./Search/ProjectSearch";
 
 
 /* ----- COMPONENT ----- */
 function ProjectsGrid() {
-    const projects = GetProjects();
+    const allProjects = GetProjects();
+    const [filteredProjects, setFilteredProjects] = useState<IProject[]>(allProjects);
+    const [resetToken, setResetToken] = useState(0);
+
+    const handleReset = () => {
+        setResetToken(prev => prev + 1);
+    };
 
     return (
         <section className="w-full py-10 px-4">
             <div className="container max-w-7xl mx-auto">
 
-                <div className="mb-8 flex items-end gap-4 border-b border-white/10 pb-4">
-                    <h2 className="text-xl font-bold text-white">Tous les projets</h2>
-                    <span className="text-xs text-dragusheen-muted font-mono mb-1">({projects.length})</span>
-                </div>
+                <ProjectSearch
+                    allProjects={allProjects}
+                    onFilter={setFilteredProjects}
+                    resetTrigger={resetToken}
+                />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {projects.map((project) => (
-                        <ProjectPresentationCard key={project.id} project={project} />
-                    ))}
-                </div>
+                <motion.div
+                    layout
+                    className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
+                >
+                    <AnimatePresence mode="popLayout">
+                        {filteredProjects.length > 0 ? (
+                            filteredProjects.map((project) => (
+                                <ProjectPresentationCard key={project.id} project={project} />
+                            ))
+                        ) : (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="col-span-full py-20 text-center flex flex-col items-center gap-4 text-dragusheen-muted"
+                            >
+                                <div className="text-4xl opacity-20 mb-2">🔭</div>
+                                <p className="text-lg text-white">Aucun résultat pour cette combinaison.</p>
+                                <button
+                                    onClick={handleReset}
+                                    className="mt-2 text-sm px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10"
+                                >
+                                    Réinitialiser tout
+                                </button>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </motion.div>
+
             </div>
         </section>
     );

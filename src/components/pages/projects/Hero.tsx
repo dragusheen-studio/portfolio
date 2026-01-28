@@ -18,7 +18,7 @@ import LiveRender from "./LiveRender/LiveRender";
 /* ----- COMPONENT ----- */
 function StudioHero() {
 	return (
-		<section className="relative w-full min-h-[90vh] flex items-center justify-center px-4 md:px-8 py-20 overflow-hidden">
+		<section className="relative w-full min-h-screen flex items-center justify-center px-4 md:px-8 py-20 overflow-hidden">
 
 			<div className="absolute top-0 right-0 w-150 h-150 bg-dragusheen-primary/5 rounded-full blur-[150px] pointer-events-none" />
 			<div className="absolute bottom-0 left-0 w-125 h-125 bg-dragusheen-secondary/5 rounded-full blur-[150px] pointer-events-none" />

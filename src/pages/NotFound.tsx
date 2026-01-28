@@ -9,6 +9,7 @@
 
 /* ----- IMPORTS ----- */
 import Button from "@/components/ui/Button";
+import { scrollToTop } from "@/services/scroll";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -25,7 +26,7 @@ const NotFoundPage: React.FC = () => {
 					Cette page s'est perdue dans le néant.
 				</h2>
 				<div className="flex flex-wrap justify-center gap-4">
-					<Link to="/">
+					<Link to="/" onClick={scrollToTop}>
 						<Button variant="primary">Retour à l'accueil</Button>
 					</Link>
 				</div>

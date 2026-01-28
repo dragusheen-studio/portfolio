@@ -9,8 +9,7 @@
 
 /* ----- IMPORTS ----- */
 import { useState, useMemo, useEffect } from "react";
-import { FaTimes, FaCheck, FaLayerGroup, FaObjectGroup } from "react-icons/fa";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import type { IProject } from "@/types/Project";
 import ProjectSearchHeader from "./Header";
 import ProjectSearchTagsFilter from "./TagsFilter";

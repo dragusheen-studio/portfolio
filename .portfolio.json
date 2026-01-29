@@ -1,0 +1,37 @@
+{
+    "title": "Dragusheen Portfolio",
+    "subtitle": "Une expérience web immersive.",
+    "description": "La plateforme sur laquelle vous naviguez actuellement. Conçue pour démontrer mes compétences techniques via une architecture React moderne et un design soigné.",
+    "image": "https://placehold.co/1920x1080/0f172a/7c3aed?text=Portfolio+Cover",
+    "tags": [
+        { "name": "React", "important": true },
+        { "name": "TypeScript", "important": true },
+        { "name": "Tailwind", "important": false },
+        { "name": "Framer Motion", "important": false }
+    ],
+    "links": [
+        { "name": "Live", "url": "https://dragusheen.com" }
+    ],
+    "featured": true,
+    "details": {
+        "role": "Lead Developer & Designer",
+        "status": "En production",
+        "client": {
+            "name": "Personal Branding",
+            "url": "https://github.com/dragusheen-studio",
+            "description": "Projet personnel"
+        },
+        "problem": "Comment se démarquer en tant que développeur dans un marché saturé, tout en prouvant techniquement ses compétences dès la première seconde de navigation, sans dépendre de CMS lourds ?",
+        "solution": "Développement from-scratch d'une SPA (Single Page Application) ultra-rapide. Utilisation de l'API GitHub pour automatiser la mise à jour des projets afin d'éviter la double maintenance.",
+        "features": [
+            "Architecture modulaire React",
+            "Animations Framer Motion complexes",
+            "Synchronisation API GitHub automatique",
+            "Design Responsive & Dark Mode"
+        ],
+        "gallery": [
+            "https://placehold.co/1200x800/0f172a/7c3aed?text=Home+Screen",
+            "https://placehold.co/1200x800/0f172a/7c3aed?text=Project+Grid"
+        ]
+    }
+}

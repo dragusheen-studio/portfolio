@@ -60,12 +60,24 @@ function ProjectHero({ project }: ProjectHeroProps) {
 					<div className="flex flex-wrap gap-4 pt-4">
 						{project.links.map(link => (
 							<a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer">
-								<Button variant={link.name.toLowerCase().includes("live") ? "primary" : "secondary"} className="flex items-center gap-2">
+								<Button
+									variant={link.name.toLowerCase().includes("live") ? "primary" : "secondary"}
+									className="flex items-center gap-2"
+								>
 									{link.name.toLowerCase().includes("git") ? <FaGithub /> : <FaExternalLinkAlt />}
 									{link.name}
 								</Button>
 							</a>
 						))}
+
+						{project.github_url && (
+							<a href={project.github_url} target="_blank" rel="noopener noreferrer">
+								<Button variant="secondary" className="flex items-center gap-2">
+									<FaGithub /> Repository
+								</Button>
+							</a>
+						)}
+
 					</div>
 				</motion.div>
 

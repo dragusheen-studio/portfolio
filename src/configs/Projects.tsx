@@ -16,6 +16,7 @@ const MockProjects: IProject[] = [
 	// --- FEATURED ---
 	{
 		id: 1,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "SedNorma",
 		subtitle: "L'IA au service de la conformité BTP.",
 		description: "Plateforme SaaS révolutionnaire utilisant l'IA pour analyser automatiquement la conformité des bâtiments aux normes ERP.",
@@ -53,6 +54,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 2,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Papaya Library",
 		subtitle: "Gestion de mémoire haute performance.",
 		description: "Une librairie C++ bas niveau focalisée sur l'optimisation mémoire et les structures de données personnalisées.",
@@ -83,6 +85,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 3,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Epicube Solver",
 		subtitle: "Résolution AR temps réel via Webcam.",
 		description: "Application de vision par ordinateur capable de scanner un Rubik's Cube et de guider l'utilisateur vers la solution.",
@@ -115,6 +118,7 @@ const MockProjects: IProject[] = [
 	// --- STANDARD PROJECTS ---
 	{
 		id: 4,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "WebTools Suite",
 		subtitle: "Le couteau suisse du développeur.",
 		description: "Ensemble d'utilitaires web open-source regroupés dans une interface unifiée.",
@@ -145,6 +149,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 5,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Vulkan Engine",
 		subtitle: "Moteur de rendu 3D from scratch.",
 		description: "Moteur graphique expérimental écrit en C++ utilisant l'API Vulkan.",
@@ -175,6 +180,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 6,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Neon Dashboard",
 		subtitle: "Admin panel data-viz futuriste.",
 		description: "Interface d'administration inspirée du style Cyberpunk avec graphiques temps réel.",
@@ -205,6 +211,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 7,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "EcoTrack Mobile",
 		subtitle: "Suivi d'empreinte carbone personnel.",
 		description: "App mobile pour calculer et suivre son empreinte carbone quotidienne.",
@@ -235,6 +242,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 8,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Quantum TSP",
 		subtitle: "Optimisation par recuit simulé.",
 		description: "Algorithmes heuristiques pour résoudre le problème du voyageur de commerce.",
@@ -265,6 +273,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 9,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Neural Chat Local",
 		subtitle: "LLM quantifié sur CPU.",
 		description: "Interface de chat pour faire tourner des modèles de langage localement.",
@@ -294,6 +303,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 10,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Cyber UI Kit",
 		subtitle: "Bibliothèque de composants React.",
 		description: "Set de composants UI réutilisables, accessibles et animés.",
@@ -324,6 +334,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 11,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Rust Sniffer",
 		subtitle: "Analyseur de paquets réseau.",
 		description: "Outil CLI performant écrit en Rust pour capturer et analyser le trafic réseau.",
@@ -354,6 +365,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 12,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Dreamscape Gen",
 		subtitle: "Art génératif procédural.",
 		description: "Exploration des algorithmes génératifs pour créer des paysages abstraits infinis.",
@@ -384,6 +396,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 13,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "SmartHome Hub",
 		subtitle: "Dashboard domotique IoT.",
 		description: "Interface centrale pour piloter des objets connectés via un Raspberry Pi.",
@@ -413,6 +426,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 14,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "FlowNote",
 		subtitle: "Prise de notes pour devs.",
 		description: "Application de prise de notes orientée Markdown avec support des diagrammes.",
@@ -442,6 +456,7 @@ const MockProjects: IProject[] = [
 	},
 	{
 		id: 15,
+		github_url: "https://github.com/dragusheen-studio/portfolio",
 		title: "Pixel Arena",
 		subtitle: "MMO 2D expérimental.",
 		description: "Prototype de jeu multijoueur en temps réel dans le navigateur.",

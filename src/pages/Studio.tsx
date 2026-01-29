@@ -8,9 +8,9 @@
 
 
 /* ----- IMPORTS ----- */
-import FeaturedSection from "@/components/pages/projects/Grid/Featured/FeaturedProject";
-import ProjectsGrid from "@/components/pages/projects/Grid/ProjectsGrid";
-import ProjectsHero from "@/components/pages/projects/Hero";
+import FeaturedSection from "@/components/pages/studio/Grid/Featured/FeaturedProject";
+import ProjectsGrid from "@/components/pages/studio/Grid/ProjectsGrid";
+import ProjectsHero from "@/components/pages/studio/Hero";
 
 
 /* ----- COMPONENT ----- */

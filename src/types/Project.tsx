@@ -18,6 +18,22 @@ interface IProjectLink {
 	url: string;
 }
 
+interface IProjectClient {
+	name: string;
+	url: string;
+	description: string;
+}
+
+interface IProjectDetails {
+	role: string;
+	client?: IProjectClient;
+	status: string;
+	problem: string;
+	solution: string;
+	features: string[];
+	gallery: string[];
+}
+
 interface IProject {
 	id: number;
 	title: string;
@@ -27,8 +43,9 @@ interface IProject {
 	image: string;
 	links: IProjectLink[];
 	featured: boolean;
+	details: IProjectDetails;
 }
 
 
 /* ----- EXPORTS ----- */
-export type { IProjectTag, IProjectLink, IProject };
+export type { IProjectTag, IProjectLink, IProject, IProjectDetails };

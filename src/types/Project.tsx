@@ -37,6 +37,8 @@ interface IProjectDetails {
 interface IProject {
 	id: number;
 	github_url: string;
+	stars: number;
+	last_push: string;
 	title: string;
 	subtitle: string;
 	description: string;

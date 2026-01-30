@@ -9,17 +9,21 @@
 
 /* ----- IMPORTS ----- */
 import { useState } from "react";
-import { GetProjects } from "@/configs/Projects";
 import ProjectPresentationCard from "./ProjectPresentationCard";
 import { AnimatePresence, motion } from "framer-motion";
 import type { IProject } from "@/types/Project";
 import ProjectSearch from "./Search/ProjectSearch";
 
 
+
+/* ----- PROPS ----- */
+interface ProjectsGridProps {
+    projects: IProject[];
+}
+
 /* ----- COMPONENT ----- */
-function ProjectsGrid() {
-    const allProjects = GetProjects();
-    const [filteredProjects, setFilteredProjects] = useState<IProject[]>(allProjects);
+function ProjectsGrid({ projects }: ProjectsGridProps) {
+    const [filteredProjects, setFilteredProjects] = useState<IProject[]>(projects);
     const [resetToken, setResetToken] = useState(0);
 
     const handleReset = () => {
@@ -31,7 +35,7 @@ function ProjectsGrid() {
             <div className="container max-w-7xl mx-auto">
 
                 <ProjectSearch
-                    allProjects={allProjects}
+                    allProjects={projects}
                     onFilter={setFilteredProjects}
                     resetTrigger={resetToken}
                 />

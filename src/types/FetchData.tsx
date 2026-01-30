@@ -22,6 +22,7 @@ interface IRepoCacheMeta {
 	lastUpdate: string;
 	github_url: string;
 	repo_name: string;
+	default_branch: string;
 	stars: number;
 }
 

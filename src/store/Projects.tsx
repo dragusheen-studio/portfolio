@@ -16,7 +16,7 @@ import type { IProject, IProjectDetails, IProjectLink, IProjectTag } from "@/typ
 /* ----- CONSTANTS ----- */
 const ORGANISATION_NAME = "dragusheen-studio";
 const REPOS_LIST_URL = `https://api.github.com/orgs/${ORGANISATION_NAME}/repos?type=public&sort=updated&per_page=100`;
-const CONFIG_FILE_NAME = ".portfolio.json";
+const CONFIG_FILE_PATH = ".portfolio/portfolio.json";
 const EXPIRED_TIME = 1000 * 60 * 60; // 1 heure
 
 
@@ -42,12 +42,29 @@ function _b64DecodeUnicode(str: string) {
 	}
 }
 
+function _resolveAssetUrl(path: string | undefined, meta: IRepoCacheMeta): string {
+	if (!path) return "https://placehold.co/1920x1080/1e1e1e/white?text=No+Image";
+
+	if (path.startsWith("http") || path.startsWith("data:"))
+		return path;
+
+	let cleanFilename = path;
+	if (path.startsWith("./")) {
+		cleanFilename = path.slice(2);
+	} else if (path.startsWith("/")) {
+		cleanFilename = path.slice(1);
+	}
+
+	return `https://cdn.jsdelivr.net/gh/${ORGANISATION_NAME}/${meta.repo_name}@${meta.default_branch}/.portfolio/${cleanFilename}`;
+}
+
 function _formatRepoMeta(ghRepo: IGitHubRepo): IRepoCacheMeta {
 	return {
 		id: ghRepo.id,
 		lastUpdate: ghRepo.pushed_at,
 		github_url: ghRepo.html_url,
 		repo_name: ghRepo.name,
+		default_branch: ghRepo.default_branch,
 		stars: ghRepo.stargazers_count
 	};
 }
@@ -69,6 +86,11 @@ function _formatJsonToProject(jsonContent: any, meta: IRepoCacheMeta): IProject 
 		}));
 	};
 
+	const formatGallery = (images: any[]): string[] => {
+		if (!Array.isArray(images)) return [];
+		return images.map(img => _resolveAssetUrl(img, meta));
+	};
+
 	const formatDetails = (d: any): IProjectDetails => {
 		return {
 			role: d.role || "Developer",
@@ -81,7 +103,7 @@ function _formatJsonToProject(jsonContent: any, meta: IRepoCacheMeta): IProject 
 			problem: d.problem || "",
 			solution: d.solution || "",
 			features: Array.isArray(d.features) ? d.features : [],
-			gallery: Array.isArray(d.gallery) ? d.gallery : []
+			gallery: formatGallery(d.gallery)
 		};
 	};
 
@@ -94,7 +116,7 @@ function _formatJsonToProject(jsonContent: any, meta: IRepoCacheMeta): IProject 
 		subtitle: jsonContent.subtitle || "",
 		description: jsonContent.description || "",
 		tags: formatTags(jsonContent.tags),
-		image: jsonContent.image || "https://placehold.co/1920x1080/1e1e1e/white?text=No+Image",
+		image: _resolveAssetUrl(jsonContent.image, meta),
 		links: formatLinks(jsonContent.links),
 		featured: jsonContent.featured || false,
 		details: formatDetails(jsonContent.details || {})
@@ -123,7 +145,7 @@ async function _fetchRepositoriesList() {
 
 async function _fetchProjectContent(meta: IRepoCacheMeta) {
 	try {
-		const fileUrl = `https://api.github.com/repos/${ORGANISATION_NAME}/${meta.repo_name}/contents/${CONFIG_FILE_NAME}`;
+		const fileUrl = `https://api.github.com/repos/${ORGANISATION_NAME}/${meta.repo_name}/contents/${CONFIG_FILE_PATH}`;
 		const response = await fetchGet(fileUrl);
 		if (response.status === 404) return;
 

@@ -2,15 +2,30 @@
     "title": "Dragusheen Portfolio",
     "subtitle": "Une expérience web immersive.",
     "description": "La plateforme sur laquelle vous naviguez actuellement. Conçue pour démontrer mes compétences techniques via une architecture React moderne et un design soigné.",
-    "image": "https://placehold.co/1920x1080/0f172a/7c3aed?text=Portfolio+Cover",
+    "image": "./cover.png",
     "tags": [
-        { "name": "React", "important": true },
-        { "name": "TypeScript", "important": true },
-        { "name": "Tailwind", "important": false },
-        { "name": "Framer Motion", "important": false }
+        {
+            "name": "React",
+            "important": true
+        },
+        {
+            "name": "TypeScript",
+            "important": true
+        },
+        {
+            "name": "Tailwind",
+            "important": false
+        },
+        {
+            "name": "Framer Motion",
+            "important": false
+        }
     ],
     "links": [
-        { "name": "Live", "url": "https://dragusheen.com" }
+        {
+            "name": "Live",
+            "url": "https://dragusheen.com"
+        }
     ],
     "featured": true,
     "details": {

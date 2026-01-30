@@ -8,7 +8,7 @@
 
 
 /* ----- IMPORTS ----- */
-import { FaBuilding, FaUserTie, FaClock, FaCalendarAlt } from "react-icons/fa";
+import { FaBuilding, FaUserTie, FaClock, FaStar, FaHistory } from "react-icons/fa";
 import type { IProject } from "@/types/Project";
 import ProjectBentoCard from "./Card";
 
@@ -21,11 +21,21 @@ interface ProjectBentoProps {
 
 /* ----- COMPONENT ----- */
 function ProjectBento({ project }: ProjectBentoProps) {
+	const formatDate = (dateString?: string) => {
+		if (!dateString) return "Inconnue";
+		const date = new Date(dateString);
+
+		return new Intl.DateTimeFormat("fr-FR", {
+			day: "numeric",
+			month: "short",
+			year: "numeric"
+		}).format(date);
+	};
+
 	return (
 		<section className="w-full px-4 mb-20">
 			<div className="container max-w-6xl mx-auto">
-				<div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-
+				<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
 					<ProjectBentoCard
 						icon={FaUserTie}
 						title="Rôle"
@@ -45,13 +55,23 @@ function ProjectBento({ project }: ProjectBentoProps) {
 						value={project.details.status}
 					/>
 
-					<ProjectBentoCard
-						icon={FaCalendarAlt}
-						title="Référence"
-						value={`#${String(project.id).padStart(3, '0')}`}
-						subValue="ID Projet"
-					/>
+					<div className="relative group">
+						<div className="absolute inset-0 bg-yellow-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+						<ProjectBentoCard
+							icon={FaStar}
+							title="GitHub Stars"
+							value={project.stars !== undefined ? project.stars.toString() : "0"}
+						/>
+					</div>
 
+					<div className="col-span-2 md:col-span-1">
+						<ProjectBentoCard
+							icon={FaHistory}
+							title="Dernier Push"
+							value={formatDate(project.last_push)}
+							subValue="Branche principale"
+						/>
+					</div>
 				</div>
 			</div>
 		</section>

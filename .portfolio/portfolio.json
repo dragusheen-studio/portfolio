@@ -30,7 +30,7 @@
             "Design Responsive & Dark Mode"
         ],
         "gallery": [
-            "https://placehold.co/1200x800/0f172a/7c3aed?text=Home+Screen",
+            "./home.png",
             "https://placehold.co/1200x800/0f172a/7c3aed?text=Project+Grid"
         ]
     }

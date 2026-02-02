@@ -52,6 +52,44 @@ const Projects: IProject[] = [
 			]
 		}
 	},
+	{
+		id: -2,
+		github_url: "https://github.com/dragusheen/EpicubeSolver",
+		stars: 0,
+		last_push: "2025-07-04T07:44:28Z",
+		title: "Epicube Solver",
+		subtitle: "Assistant de résolution en Terminal.",
+		description: "Un outil en ligne de commande (CLI) permettant de numériser, manipuler et résoudre un Rubik's Cube. Il propose une saisie manuelle ou assistée par webcam pour générer la solution optimale.",
+		image: "/img/projects/EpicubeSolver/Cube.png",
+		tags: [
+			{ name: "Python", important: true },
+			{ name: "CLI", important: true },
+			{ name: "OpenCV", important: false },
+			{ name: "Résolution", important: false },
+			{ name: "Kociemba", important: false },
+			{ name: "Algorithm", important: false }
+		],
+		links: [],
+		featured: true,
+		details: {
+			role: "Developer",
+			status: "En pause",
+			problem: "Transférer l'état d'un cube physique vers un solveur est souvent fastidieux. Les interfaces graphiques sont parfois lourdes pour un besoin simple.",
+			solution: "Développement d'une interface textuelle légère capable de modéliser le cube en 2D (ASCII/Couleurs). L'entrée peut être accélérée via une webcam qui scanne les faces, avant de laisser l'algorithme calculer la solution.",
+			features: [
+				"Interface Terminal",
+				"Visualisation d'état",
+				"Saisie assistée par Webcam",
+				"Notation standard"
+			],
+			gallery: [
+				"/img/projects/EpicubeSolver/Build.png",
+				"/img/projects/EpicubeSolver/View.png",
+				"/img/projects/EpicubeSolver/Shuffle.png",
+				"/img/projects/EpicubeSolver/Solve.png",
+			]
+		}
+	},
 ];
 
 /* ----- FUNCTION ----- */

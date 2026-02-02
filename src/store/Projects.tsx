@@ -11,6 +11,7 @@
 import { fetchGet } from "@/services/fetch";
 import type { IGitHubRepo, IRepoCacheMeta } from "@/types/FetchData";
 import type { IProject, IProjectDetails, IProjectLink, IProjectTag } from "@/types/Project";
+import { GetProjects } from "@/configs/Projects";
 
 
 /* ----- CONSTANTS ----- */
@@ -181,8 +182,9 @@ async function _checkExpired() {
 /* ----- PUBLIC FUNCTION ----- */
 async function getProjects(): Promise<IProject[]> {
 	await _checkExpired();
+	const githubProjects = Array.from(projectStorage.values());
+	const allProjects = [...githubProjects, ...GetProjects()];
 
-	let allProjects = Array.from(projectStorage.values());
 	allProjects.sort((a, b) => {
 		const dateA = a.last_push ? new Date(a.last_push).getTime() : 0;
 		const dateB = b.last_push ? new Date(b.last_push).getTime() : 0;
@@ -192,6 +194,8 @@ async function getProjects(): Promise<IProject[]> {
 }
 
 async function getProject(id: number): Promise<IProject | undefined> {
+	if (id < 0) return GetProjects().find(p => p.id === id);
+
 	await _checkExpired();
 	return projectStorage.get(id);
 }

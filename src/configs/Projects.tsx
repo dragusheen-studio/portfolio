@@ -166,7 +166,7 @@ const Projects: IProject[] = [
 		title: "Papaya Lib (C)",
 		subtitle: "Gestion de données structurées en C.",
 		description: "Une bibliothèque légère écrite en C pur pour faciliter la manipulation et la persistance de données dynamiques. Elle permet de définir des schémas (clés), d'ajouter des entrées et de sauvegarder l'état sur le disque via une API simple.",
-		image: "https://placehold.co/1920x1080/ea580c/white?text=Papaya+C",
+		image: "/img/projects/Papaya/Logo.png",
 		tags: [
 			{ name: "C", important: true },
 			{ name: "Database", important: true },
@@ -193,12 +193,43 @@ const Projects: IProject[] = [
 			],
 			gallery: []
 		}
+	},
+	{
+		id: 0,
+		github_url: "https://github.com/dragusheen/linked_list-library",
+		stars: 0,
+		last_push: "2024-07-29T09:48:12Z",
+		title: "Linked List Lib",
+		subtitle: "Implémentation générique en C.",
+		description: "Une bibliothèque C robuste proposant une implémentation de listes simplement chaînées génériques (`void *`). Elle fournit une API standardisée utilisant le préfixe `dl_` (Dragusheen Linked-list) pour faciliter la manipulation de données dynamiques.",
+		image: "/img/projects/LinkedList/Logo.png",
+		tags: [
+			{ name: "C", important: true },
+			{ name: "Lib", important: true },
+			{ name: "DataStructure", important: true },
+			{ name: "Generic", important: false }
+		],
+		links: [],
+		featured: false,
+		details: {
+			role: "Developer",
+			status: "Terminé",
+			problem: "En C standard, l'absence de conteneurs dynamiques force souvent la réécriture de structures de base pour chaque projet, ce qui est fastidieux et source d'erreurs (memory leaks).",
+			solution: "Développement d'une structure générique (`void *`) agnostique du type de données. L'API expose des fonctions de haut niveau (Insert trié, Apply, Random) tout en encapsulant la complexité des pointeurs.",
+			features: [
+				"Support générique (void*)",
+				"Programmation fonctionnelle (Apply)",
+				"Insertion triée (Custom Compare)",
+				"Sélection aléatoire d'éléments"
+			],
+			gallery: []
+		}
 	}
 ];
 
 /* ----- FUNCTION ----- */
 function GetProjects() {
-	if (Projects[0].id === 0) Projects.forEach((p, i) => p.id = -i);
+	if (Projects[0].id === 0) Projects.forEach((p, i) => p.id = -(i + 1));
 	return Projects;
 }
 

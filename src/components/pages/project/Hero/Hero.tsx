@@ -9,9 +9,10 @@
 
 /* ----- IMPORTS ----- */
 import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import type { IProject } from "@/types/Project";
+import ProjectHeroLinkButton from "./LinkButton";
 
 
 /* ----- PROPS ----- */
@@ -58,17 +59,9 @@ function ProjectHero({ project }: ProjectHeroProps) {
 					</p>
 
 					<div className="flex flex-wrap gap-4 pt-4">
-						{project.links.map(link => (
-							<a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer">
-								<Button
-									variant={link.name.toLowerCase().includes("live") ? "primary" : "secondary"}
-									className="flex items-center gap-2"
-								>
-									{link.name.toLowerCase().includes("git") ? <FaGithub /> : <FaExternalLinkAlt />}
-									{link.name}
-								</Button>
-							</a>
-						))}
+						{project.links.map(link =>
+							<ProjectHeroLinkButton link={link} key={link.name} />
+						)}
 
 						{project.github_url && (
 							<a href={project.github_url} target="_blank" rel="noopener noreferrer">

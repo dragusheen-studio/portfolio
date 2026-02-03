@@ -122,6 +122,78 @@ const Projects: IProject[] = [
 			gallery: []
 		}
 	},
+	{
+		id: 0,
+		github_url: "https://github.com/dragusheen/papaya-library-cpp",
+		stars: 1,
+		last_push: "2024-12-18T11:12:44Z",
+		title: "Papaya Lib (C++)",
+		subtitle: "Base de données fichier légère.",
+		description: "Une bibliothèque C++ permettant de gérer la persistance de données via le format personnalisé `.papaya`. Elle offre une API complète pour créer, lire, mettre à jour et supprimer (CRUD) des données structurées sans la lourdeur d'un moteur SQL.",
+		image: "/img/projects/Papaya/Logo.png",
+		tags: [
+			{ name: "C++", important: true },
+			{ name: "Database", important: true },
+			{ name: "Lib", important: true },
+			{ name: "Filesystem", important: false },
+			{ name: "DataManagement", important: false },
+			{ name: "Persistence", important: false },
+			{ name: "CRUD", important: false }
+		],
+		links: [
+			{ name: "Version C", url: "./Papaya Lib (C)" }
+		],
+		featured: true,
+		details: {
+			role: "Library Author",
+			status: "Maintenu",
+			problem: "Stocker des données structurées nécessite souvent d'intégrer des moteurs lourds (SQLite) ou de parser manuellement des fichiers CSV/JSON sans validation de schéma.",
+			solution: "Création d'un format propriétaire `.papaya` et de son moteur associé. La lib gère la sérialisation, la recherche par clé/valeur et la modification de données en mémoire avant de sauvegarder sur le disque.",
+			features: [
+				"Opérations CRUD complètes",
+				"Recherche par Clé/Valeur",
+				"Gestion d'erreurs (Exceptions custom)",
+				"Persistance fichier (.papaya)"
+			],
+			gallery: []
+		}
+	},
+	{
+		id: 0,
+		github_url: "https://github.com/dragusheen/papaya-library-c",
+		stars: 1,
+		last_push: "2024-06-10T20:56:16Z",
+		title: "Papaya Lib (C)",
+		subtitle: "Gestion de données structurées en C.",
+		description: "Une bibliothèque légère écrite en C pur pour faciliter la manipulation et la persistance de données dynamiques. Elle permet de définir des schémas (clés), d'ajouter des entrées et de sauvegarder l'état sur le disque via une API simple.",
+		image: "https://placehold.co/1920x1080/ea580c/white?text=Papaya+C",
+		tags: [
+			{ name: "C", important: true },
+			{ name: "Database", important: true },
+			{ name: "Lib", important: true },
+			{ name: "Filesystem", important: false },
+			{ name: "DataManagement", important: false },
+			{ name: "Persistence", important: false },
+			{ name: "CRUD", important: false }
+		],
+		links: [
+			{ name: "Version C++", url: "./Papaya Lib (C++)" }
+		],
+		featured: false,
+		details: {
+			role: "Library Author",
+			status: "Stable",
+			problem: "En C, gérer des données dynamiques (listes, paires clé-valeur) et leur sauvegarde fichier implique souvent une gestion complexe de la mémoire (`malloc`/`free`) et l'écriture de parseurs manuels sujets aux erreurs.",
+			solution: "Une abstraction 'orientée objet' via des structures opaques (`papaya_t`). La bibliothèque encapsule la complexité des listes doublement chaînées et de la sérialisation, offrant une interface propre (`create`, `add`, `save`, `destroy`).",
+			features: [
+				"Persistance fichier simple",
+				"Gestion mémoire encapsulée",
+				"Structure de données dynamique",
+				"API style Objet en C"
+			],
+			gallery: []
+		}
+	}
 ];
 
 /* ----- FUNCTION ----- */

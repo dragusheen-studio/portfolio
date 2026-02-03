@@ -219,4 +219,10 @@ async function getProjectNeighbors(currentProject: IProject) {
 	};
 }
 
-export { getProjects, getProject, getProjectNeighbors };
+async function getProjectByTitle(title: string): Promise<number | undefined> {
+	const allProjects = await getProjects();
+	const project = allProjects.find(p => p.title === title);
+	return project?.id;
+}
+
+export { getProjects, getProject, getProjectNeighbors, getProjectByTitle };

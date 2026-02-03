@@ -333,6 +333,46 @@ const Projects: IProject[] = [
 				"/img/projects/Raycaster/3D.png"
 			]
 		}
+	},
+	{
+		id: 0,
+		github_url: "https://github.com/dragusheen/tic_tac_toe_Bot",
+		stars: 0,
+		last_push: "2024-01-01T00:00:00Z",
+		title: "Tic Tac Toe Bot",
+		subtitle: "IA de morpion en Ncurses.",
+		description: "Un jeu de Morpion (Tic-Tac-Toe) jouable dans le terminal contre une Intelligence Artificielle. Le projet utilise la librairie graphique Ncurses pour l'interface et un algorithme heuristique inspiré de MinMax pour la prise de décision du bot.",
+		image: "/img/projects/TicTacToeBot/Logo.png",
+		tags: [
+			{ name: "C", important: true },
+			{ name: "Ncurses", important: true },
+			{ name: "AI", important: true },
+			{ name: "Algorithm", important: false },
+			{ name: "MinMax", important: false },
+			{ name: "Terminal", important: false },
+			{ name: "TUI", important: false },
+			{ name: "GameDev", important: false }
+		],
+		links: [],
+		featured: false,
+		details: {
+			role: "Developer",
+			status: "Terminé",
+			problem: "Créer un jeu interactif en C sans moteur graphique lourd, tout en offrant un adversaire (Bot) capable de jouer intelligemment et non aléatoirement.",
+			solution: "Utilisation de Ncurses pour gérer les inputs clavier (flèches) et le rendu graphique ASCII. L'IA analyse le plateau à chaque tour et attribue un score à chaque case libre (+2 pour gagner, +1 pour bloquer, 0 neutre) pour choisir le coup optimal.",
+			features: [
+				"Interface Terminal (TUI) fluide",
+				"IA Stratégique (MinMax simplifié)",
+				"Contrôles au clavier",
+				"Détection de victoire/nul"
+			],
+			gallery: [
+				"/img/projects/TicTacToeBot/Game.png",
+				"/img/projects/TicTacToeBot/Win.png",
+				"/img/projects/TicTacToeBot/Lose.png",
+				"/img/projects/TicTacToeBot/Equal.png"
+			]
+		}
 	}
 ];
 

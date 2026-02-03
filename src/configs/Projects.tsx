@@ -14,7 +14,7 @@ import type { IProject } from "@/types/Project";
 /* ----- DATAS ----- */
 const Projects: IProject[] = [
 	{
-		id: -1,
+		id: 0,
 		github_url: "https://github.com/dragusheen/Advent_of_code",
 		stars: 0,
 		last_push: "2025-12-11T00:58:27Z",
@@ -53,7 +53,7 @@ const Projects: IProject[] = [
 		}
 	},
 	{
-		id: -2,
+		id: 0,
 		github_url: "https://github.com/dragusheen/EpicubeSolver",
 		stars: 0,
 		last_push: "2025-07-04T07:44:28Z",
@@ -70,7 +70,7 @@ const Projects: IProject[] = [
 			{ name: "Algorithm", important: false }
 		],
 		links: [],
-		featured: true,
+		featured: false,
 		details: {
 			role: "Developer",
 			status: "En pause",
@@ -90,10 +90,43 @@ const Projects: IProject[] = [
 			]
 		}
 	},
+	{
+		id: 0,
+		github_url: "https://github.com/dragusheen/input_manager-library",
+		stars: 0,
+		last_push: "2024-05-14T12:20:59Z",
+		title: "Input Manager Lib",
+		subtitle: "Gestion d'entrées Terminal avancée.",
+		description: "Une bibliothèque C++ permettant de capturer et gérer les entrées utilisateur dans un terminal avec le confort d'un shell moderne (historique, navigation curseur, auto-complétion, etc).",
+		image: "/img/projects/InputManager/Logo.png",
+		tags: [
+			{ name: "C++", important: true },
+			{ name: "CLI", important: true },
+			{ name: "Lib", important: true },
+			{ name: "Termios", important: true },
+			{ name: "Unix", important: false }
+		],
+		links: [],
+		featured: false,
+		details: {
+			role: "Library Author",
+			status: "Terminé",
+			problem: "L'entrée standard C++ (`std::cin`) est bloquante et limitée : impossible d'utiliser les flèches pour déplacer le curseur, pas d'historique de commandes, ni d'auto-complétion.",
+			solution: "Encapsulation de la structure `termios` pour passer le terminal en mode 'raw'. Implémentation manuelle de la gestion du buffer d'entrée, des séquences d'échappement (flèches) et des raccourcis style Emacs (Ctrl+A, Ctrl+E).",
+			features: [
+				"Historique de commandes (Haut/Bas)",
+				"Auto-complétion (Tabulation)",
+				"Édition de ligne et curseur",
+				"Raccourcis (Ctrl+A, Ctrl+E, Ctrl+K...)"
+			],
+			gallery: []
+		}
+	},
 ];
 
 /* ----- FUNCTION ----- */
 function GetProjects() {
+	if (Projects[0].id === 0) Projects.forEach((p, i) => p.id = -i);
 	return Projects;
 }
 

@@ -224,7 +224,41 @@ const Projects: IProject[] = [
 			],
 			gallery: []
 		}
-	}
+	},
+	{
+		id: 0,
+		github_url: "https://github.com/dragusheen/traductor-library",
+		stars: 1,
+		last_push: "2024-06-10T21:47:10Z",
+		title: "Traductor Lib",
+		subtitle: "Moteur i18n avec parsing récursif.",
+		description: "Une bibliothèque C++ d'internationalisation basée sur le pattern Singleton. Elle implémente un parser personnalisé capable de lire des structures imbriquées (conteneurs) et supporte le 'Lazy Loading' pour optimiser l'empreinte mémoire.",
+		image: "/img/projects/Traductor/Logo.png",
+		tags: [
+			{ name: "C++", important: true },
+			{ name: "Lib", important: true },
+			{ name: "i18n", important: true },
+			{ name: "Parsing", important: false },
+			{ name: "Traduction", important: false },
+			{ name: "Recursion", important: false },
+			{ name: "Singleton", important: false }
+		],
+		links: [],
+		featured: false,
+		details: {
+			role: "Library Architect",
+			status: "Terminé",
+			problem: "Les formats de traduction standards (JSON, PO) nécessitent souvent des librairies tierces lourdes. Je voulais une solution native légère capable de structurer les traductions hiérarchiquement sans dépendance externe.",
+			solution: "Création d'un format de fichier propriétaire (`.lang`) supportant l'imbrication (Containers). Le moteur utilise une descente récursive pour parser ces fichiers et offre un accès global via un Singleton. L'option Lazy Loading permet de ne charger que la langue active.",
+			features: [
+				"Format structuré (.lang)",
+				"Support de conteneurs imbriqués",
+				"Optimisation Lazy Loading",
+				"Accès par Dot-Notation (key.sub.val)"
+			],
+			gallery: []
+		}
+	},
 ];
 
 /* ----- FUNCTION ----- */

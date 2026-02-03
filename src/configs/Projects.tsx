@@ -297,6 +297,42 @@ const Projects: IProject[] = [
 				"/img/projects/WebTools/alphabetical_order.png",
 			]
 		}
+	},
+	{
+		id: 0,
+		github_url: "https://github.com/dragusheen/raycaster",
+		stars: 0,
+		last_push: "2024-01-01T00:00:00Z",
+		title: "Raycaster Engine",
+		subtitle: "Labo de rendu Raycasting.",
+		description: "Une implémentation didactique du Raycasting en C++. Le projet affiche simultanément une vue 2D (Debug) montrant les rayons et une vue 3D texturée, permettant de visualiser concrètement le fonctionnement de l'algorithme.",
+		image: "/img/projects/Raycaster/Logo.png",
+		tags: [
+			{ name: "C++", important: true },
+			{ name: "SFML", important: true },
+			{ name: "Algorithm", important: true },
+			{ name: "Math", important: false },
+			{ name: "Labo", important: false },
+			{ name: "Raycasting", important: false }
+		],
+		links: [],
+		featured: false,
+		details: {
+			role: "Developer",
+			status: "Prototype",
+			problem: "Comprendre et implémenter 'from scratch' les mathématiques derrière les moteurs 3D rétro (Wolfenstein 3D) sans utiliser de moteur tout fait.",
+			solution: "Création d'un moteur utilisant l'algorithme DDA. Particularité : l'application gère deux fenêtres synchronisées. L'une affiche la carte et les rayons en temps réel pour le debug, l'autre le rendu 3D final. Le tout repose sur une surcouche personnelle de la SFML.",
+			features: [
+				"Double rendu synchronisé (2D/3D)",
+				"Algorithme DDA optimisé",
+				"Gestion de caméra (FOV, Rotation)",
+				"Encapsulation SFML custom"
+			],
+			gallery: [
+				"/img/projects/Raycaster/2D.png",
+				"/img/projects/Raycaster/3D.png"
+			]
+		}
 	}
 ];
 

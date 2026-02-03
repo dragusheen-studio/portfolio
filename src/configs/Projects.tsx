@@ -259,6 +259,45 @@ const Projects: IProject[] = [
 			gallery: []
 		}
 	},
+	{
+		id: 0,
+		github_url: "https://github.com/dragusheen/WebTools",
+		stars: 0,
+		last_push: "2024-01-01T00:00:00Z",
+		title: "WebTools",
+		subtitle: "Boîte à outils web centralisée.",
+		description: "Une application web regroupant tous les utilitaires essentiels du quotidien (manipulation de texte, sécurité, conversion) en une seule interface propre et sans publicité. Plus besoin de chercher 10 sites différents pour des tâches simples.",
+		image: "/img/projects/WebTools/Logo.png",
+		tags: [
+			{ name: "React", important: true },
+			{ name: "TypeScript", important: true },
+			{ name: "Vite", important: true },
+			{ name: "Web App", important: true },
+			{ name: "Utils", important: false }
+		],
+		links: [
+			{ name: "Voir le site", url: "https://dragusheen.github.io/WebTools/" }
+		],
+		featured: false,
+		details: {
+			role: "Fullstack Developer",
+			status: "En pause (Refonte prévue)",
+			problem: "Pour des tâches simples (compter des mots, trier une liste, générer un mot de passe), on finit souvent par naviguer sur des sites douteux, remplis de publicités, ou par devoir chercher un outil différent pour chaque besoin.",
+			solution: "Développement d'une 'Single Page Application' (SPA) centralisée, rapide et extensible. L'architecture modulaire permet d'ajouter facilement de nouveaux 'Tools' sans toucher au cœur de l'application.",
+			features: [
+				"Analyseur de texte (Stats)",
+				"Suite Sécurité (Générateur/Testeur MDP)",
+				"Outils de tri (Ordre alphabétique)",
+				"Architecture modulaire (Scalable)"
+			],
+			gallery: [
+				"/img/projects/WebTools/password_generator.png",
+				"/img/projects/WebTools/password_checker.png",
+				"/img/projects/WebTools/home.png",
+				"/img/projects/WebTools/alphabetical_order.png",
+			]
+		}
+	}
 ];
 
 /* ----- FUNCTION ----- */

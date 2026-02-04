@@ -10,6 +10,7 @@
 /* ----- IMPORTS ----- */
 import BentoCard from "@/components/layout/BentoCard";
 import Badge from "@/components/ui/Badge";
+import { scrollToTop } from "@/services/scroll";
 import { Link } from "react-router-dom";
 
 
@@ -28,7 +29,11 @@ function BentoGridSecondLine() {
 						<Badge className="bg-dragusheen-secondary/20 text-dragusheen-secondary border-dragusheen-secondary/30">#Design</Badge>
 					</div>
 					<div className="mt-6">
-						<Link to="/projects" className="inline-flex items-center gap-2 text-white font-bold border-b border-dragusheen-primary pb-0.5 hover:text-dragusheen-primary transition-colors">
+						<Link
+							to="/studio"
+							className="inline-flex items-center gap-2 text-white font-bold border-b border-dragusheen-primary pb-0.5 hover:text-dragusheen-primary transition-colors"
+							onClick={scrollToTop}
+						>
 							Voir comment j'applique ça <span>→</span>
 						</Link>
 					</div>

@@ -11,6 +11,7 @@ import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import { Link } from "react-router-dom";
 import FakeCV from "@/components/pages/about/FakeCV";
+import { scrollToTop } from "@/services/scroll";
 
 function AboutHero() {
     return (
@@ -49,7 +50,7 @@ function AboutHero() {
                             </Button>
                         </a>
 
-                        <Link to="/contact">
+                        <Link to="/contact" onClick={scrollToTop}>
                             <Button variant="ghost">Me contacter</Button>
                         </Link>
                     </div>

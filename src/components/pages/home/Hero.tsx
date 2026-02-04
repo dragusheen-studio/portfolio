@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import { useTypewriter } from "@/services/TypeWritterEffect";
+import { scrollToTop } from "@/services/scroll";
 
 
 /* ----- COMPONENT ----- */
@@ -57,10 +58,10 @@ function HomeHero() {
 					</p>
 
 					<div className="flex flex-wrap gap-4 mt-2">
-						<Link to="/projects">
+						<Link to="/studio" onClick={scrollToTop}>
 							<Button variant="primary">Mes Projets</Button>
 						</Link>
-						<Link to="/contact">
+						<Link to="/contact" onClick={scrollToTop}>
 							<Button variant="secondary">Me Contacter</Button>
 						</Link>
 					</div>

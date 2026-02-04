@@ -14,7 +14,8 @@ import type { IPageConfig } from "@/types/PageConfig";
 import Layout from "@/components/layout/Layout";
 import HomePage from "@/pages/Home";
 import AboutPage from "@/pages/About";
-import ProjectsPage from "@/pages/Projects";
+import StudioPage from "@/pages/Studio";
+import ProjectPage from "@/pages/Project";
 import ContactPage from "@/pages/Contact";
 import NotFoundPage from "@/pages/NotFound";
 
@@ -29,10 +30,17 @@ const PagesDatas: IPageConfig[] = [
 		displayLayout: true,
 	},
 	{
-		name: "Projets",
-		path: "/projects",
-		content: ProjectsPage,
+		name: "Studio",
+		path: "/studio",
+		content: StudioPage,
 		displayInNavBar: true,
+		displayLayout: true,
+	},
+	{
+		name: "Project",
+		path: "/studio/:projectId",
+		content: ProjectPage,
+		displayInNavBar: false,
 		displayLayout: true,
 	},
 	{

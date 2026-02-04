@@ -14,7 +14,7 @@ import type { ITimelineChapter } from "@/types/TimelineChapter";
 /* ----- DATAS ----- */
 const TimelineChapter: ITimelineChapter[] = [
     {
-        id: 1,
+        id: 0,
         navLabel: "Le Commencement - Epitech",
         year: "2022",
         title: "Le Commencement",
@@ -23,12 +23,12 @@ const TimelineChapter: ITimelineChapter[] = [
         quote: "Ma première expérience de code et surtout ce premier pied dans un monde que je ne quitterais plus !",
         tags: ["C / C++", "Unix", "Algorithmique", "Résilience"],
         theme: "from-[#207db1] to-[#2ca9ef]",
-        align: "left",
-        image: "/img/timeline/epitech_logo.png"
+        image: "/img/timeline/epitech_logo.png",
+        links: [],
     },
 
     {
-        id: 2,
+        id: 0,
         navLabel: "L'Exigence - Indigen Solution",
         year: "Juil. 2023 - Déc. 2023",
         title: "L'Exigence du Pixel",
@@ -37,12 +37,12 @@ const TimelineChapter: ITimelineChapter[] = [
         quote: "Ma première expérience professionnelle avec un mentor qui a parfaitement su me transmettre sa passion et sa rigueur !",
         tags: ["React", "Luxe", "Rigueur", "CSS Expert"],
         theme: "from-[#ca0574] to-[#ff079e]",
-        align: "right",
-        image: "/img/timeline/indigen_logo.png"
+        image: "/img/timeline/indigen_logo.png",
+        links: [],
     },
 
     {
-        id: 3,
+        id: 0,
         navLabel: "Transmettre - Epitech",
         year: "Fév. 2024 - Mars 2025",
         title: "Apprendre en Transmettant",
@@ -51,12 +51,12 @@ const TimelineChapter: ITimelineChapter[] = [
         quote: "Le moment où j'ai compris que je ne voulais pas seulement coder, mais aussi apprendre et transmettre mes connaissances !",
         tags: ["Pédagogie", "Leadership", "Système", "C++"],
         theme: "from-[#ae0920] to-[#ec0c2c]",
-        align: "left",
-        image: "/img/timeline/epitech_logo.png"
+        image: "/img/timeline/epitech_logo.png",
+        links: [],
     },
 
     {
-        id: 4,
+        id: 0,
         navLabel: "Industrie & UX - WIT",
         year: "Mars 2025 - Juil. 2025",
         title: "Au cœur de l'Industrie",
@@ -65,12 +65,12 @@ const TimelineChapter: ITimelineChapter[] = [
         quote: "Un véritable défi, tant technique qu'organisationnel. Être maître de mon propre projet était une responsabilité nouvelle et excitante !",
         tags: ["React Native", "UI/UX", "Industriel", "TypeScript"],
         theme: "from-[#0087c1] to-[#00b7ff]",
-        align: "right",
-        image: "/img/timeline/wit_logo.png"
+        image: "/img/timeline/wit_logo.png",
+        links: [],
     },
 
     {
-        id: 5,
+        id: 0,
         navLabel: "L'Exploration - UQAC",
         year: "Août 2025 - Mai 2026",
         title: "L'Exploration",
@@ -79,13 +79,35 @@ const TimelineChapter: ITimelineChapter[] = [
         quote: "J'y ai découvert un nouveau monde dont je n'effleurais que la surface : le Game Dev, c'est incroyable !",
         tags: ["International", "GameDev", "Adaptabilité", "Unity"],
         theme: "from-[#7c8c4d] to-[#a8be68]",
-
-        align: "left",
-        image: "/img/timeline/uqac_logo.png"
+        image: "/img/timeline/uqac_logo.png",
+        links: [],
     },
 
     {
-        id: 6,
+        id: 0,
+        navLabel: "L'Expression - Radio UQAC",
+        year: "Sept. 2025 - Mai 2026",
+        title: "L'Expression",
+        subtitle: "Club Radio UQAC - Vice-Président & Monteur",
+        description: "Découverte d'une passion inattendue : la voix. En tant que Vice-Président, j'ai transformé mon goût pour l'écriture en émissions concrètes. Interviewer, animer, monter : j'ai appris à structurer un récit et à captiver une audience sans une seule ligne de code. Une aventure humaine où la logique laisse place à l'émotion.",
+        quote: "J'ai réalisé que raconter une histoire à travers un micro est tout aussi puissant que d'en raconter une à travers un programme.",
+        tags: ["Storytelling", "Communication", "Montage Audio", "Leadership"],
+        theme: "from-[#8e44ad] to-[#9b59b6]",
+        image: "/img/timeline/studio_52_20.png",
+        links: [
+            {
+                label: "Découvrir mes podcasts",
+                url: "https://open.spotify.com/show/0t18hVPLS2V79KEnVE9bNQ"
+            },
+            {
+                label: "Découvrir le Studio 52.20",
+                url: "https://discord.gg/cMtqaD2Zv5"
+            },
+        ],
+    },
+
+    {
+        id: 0,
         navLabel: "La Vision - SedNorma",
         year: "2025 - Présent",
         title: "La Vision",
@@ -94,14 +116,15 @@ const TimelineChapter: ITimelineChapter[] = [
         quote: "Je ne vois plus juste la fin d'un projet, mais toute sa continuité. Pour une fois, j'espère ne jamais avoir à faire le 'Push Final' !",
         tags: ["Architecture IA", "Entrepreneuriat", "Python", "Full Stack"],
         theme: "from-[#ce6304] to-[#ff8506]",
-        align: "right",
-        image: "/img/timeline/sednorma_logo.png"
+        image: "/img/timeline/sednorma_logo.png",
+        links: [],
     }
 ];
 
 
 /* ----- FUNCTION ----- */
 function GetTimelineChapters() {
+    if (TimelineChapter[0].id === 0) TimelineChapter.forEach((c, i) => c.id = i + 1);
     return TimelineChapter;
 }
 

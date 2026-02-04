@@ -9,6 +9,7 @@
 
 /* ----- IMPORTS ----- */
 import { motion } from "framer-motion";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import Badge from "@/components/ui/Badge";
 import type { ITimelineChapter } from "@/types/TimelineChapter";
 
@@ -21,7 +22,7 @@ interface TimelineChapterProps {
 
 /* ----- COMPONENT ----- */
 function TimelineChapter({ data }: TimelineChapterProps) {
-	const isLeft = data.align === "left";
+	const isLeft = data.id % 2 === 1;
 
 	return (
 		<section
@@ -75,8 +76,30 @@ function TimelineChapter({ data }: TimelineChapterProps) {
 							</span>
 						))}
 					</div>
-				</motion.div>
 
+					{data.links && data.links.length > 0 && (
+						<div className={`flex flex-wrap gap-4 mt-2 ${isLeft ? "justify-start" : "justify-end"}`}>
+							{data.links.map((link, idx) => (
+								<a
+									key={idx}
+									href={link.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="group relative px-6 py-2.5 rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-white/30 transition-all duration-300"
+								>
+									{/* Fond dégradé au survol */}
+									<div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-linear-to-r ${data.theme}`} />
+
+									<span className="relative z-10 flex items-center gap-2 text-sm font-bold text-white/80 group-hover:text-white transition-colors">
+										{link.label}
+										<FaExternalLinkAlt size={10} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+									</span>
+								</a>
+							))}
+						</div>
+					)}
+
+				</motion.div>
 
 				<motion.div
 					initial={{ opacity: 0, scale: 0.95 }}
@@ -97,7 +120,6 @@ function TimelineChapter({ data }: TimelineChapterProps) {
 						<div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-linear-to-br ${data.theme}`}></div>
 					</div>
 				</motion.div>
-
 			</div>
 		</section>
 	);

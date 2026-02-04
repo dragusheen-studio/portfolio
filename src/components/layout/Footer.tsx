@@ -74,7 +74,7 @@ function Footer() {
 						<div className="opacity-60">
 							© {currentYear} Dragusheen Studio. All rights reserved.
 						</div>
-						<div className="flex items-center gap-2 opacity-80">
+						<div className="flex flex-col md:flex-row items-center gap-2 opacity-80">
 							<span>Designed & Built using</span>
 							<Badge>React</Badge>
 							<Badge>TypeScript</Badge>

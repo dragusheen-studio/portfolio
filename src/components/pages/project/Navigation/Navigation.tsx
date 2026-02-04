@@ -50,7 +50,7 @@ function ProjectNavigation({ project }: ProjectNavigationProps) {
 
 				{neighbors && (
 					<div className={`
-                        grid gap-6 md:gap-8 h-48 md:h-56 w-full
+                        grid gap-6 md:gap-8 w-full h-auto md:h-48
                         ${neighbors.isSingleNeighbor ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"}
                     `}>
 						{!neighbors.isSingleNeighbor && (

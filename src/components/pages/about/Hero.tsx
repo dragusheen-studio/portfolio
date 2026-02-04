@@ -41,7 +41,7 @@ function AboutHero() {
                         Vous trouverez ici le détail de mes expériences, mais si vous préférez la version synthétique, le CV est juste là.
                     </p>
 
-                    <div className="flex flex-wrap gap-4 mt-2">
+                    <div className="flex flex-col md:flex-wrap gap-4 mt-2">
                         <a href="/pdf/cv_nathan_tirolf.pdf" download target="_blank" rel="noopener noreferrer">
                             <Button variant="primary" className="group shadow-lg shadow-dragusheen-primary/20">
                                 <span className="mr-2">📄</span>
@@ -50,7 +50,7 @@ function AboutHero() {
                             </Button>
                         </a>
 
-                        <Link to="/contact" onClick={scrollToTop}>
+                        <Link to="/contact" onClick={scrollToTop} className="flex justify-center md:justify-start">
                             <Button variant="ghost">Me contacter</Button>
                         </Link>
                     </div>

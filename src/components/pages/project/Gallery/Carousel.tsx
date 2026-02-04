@@ -59,7 +59,7 @@ function ProjectGalleryCarousel({ gallery, glassContainerClass, setSelectedImage
 
 	return (
 		<div
-			className="flex flex-col gap-4"
+			className="flex flex-col gap-4 w-full"
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 		>
@@ -81,21 +81,38 @@ function ProjectGalleryCarousel({ gallery, glassContainerClass, setSelectedImage
 				</AnimatePresence>
 			</div>
 
-			<div className="flex items-center justify-center gap-4 mt-2">
-				<button onClick={prevImage} className="p-3 rounded-full bg-white/5 hover:bg-white/20 text-white transition-colors border border-white/10"><FaChevronLeft size={16} /></button>
-				<div className="flex gap-2">
-					{getVisibleThumbnails().map((item) => (
+			<div className="flex items-center justify-center gap-2 md:gap-4 mt-2 max-w-full">
+				<button
+					onClick={prevImage}
+					className="p-2 md:p-3 rounded-full bg-white/5 hover:bg-white/20 text-white transition-colors border border-white/10 shrink-0"
+				>
+					<FaChevronLeft size={12} className="md:w-4 md:h-4" />
+				</button>
+
+				<div className="flex gap-2 overflow-hidden">
+					{getVisibleThumbnails().map((item, localIndex) => (
 						<button
 							key={item.originalIndex}
 							onClick={(e) => { e.stopPropagation(); setCurrentIndex(item.originalIndex); }}
-							className={`relative h-16 w-24 rounded-lg overflow-hidden border transition-all duration-300 ${glassContainerClass} ${currentIndex === item.originalIndex ? "border-orange-500 opacity-100 scale-105 bg-black/60" : "border-white/10 opacity-50 hover:opacity-80"
-								}`}
+							className={`
+                                relative rounded-lg overflow-hidden border transition-all duration-300 shrink-0
+                                ${glassContainerClass} 
+                                ${currentIndex === item.originalIndex ? "border-dragusheen-primary opacity-100 scale-105 bg-black/60" : "border-white/10 opacity-50 hover:opacity-80"}
+                                h-10 w-14 md:h-16 md:w-24
+                                ${(localIndex === 0 || localIndex === 4) ? "hidden md:block" : "block"}
+                            `}
 						>
 							<img src={item.url} alt="thumb" className="w-full h-full object-contain p-1" />
 						</button>
 					))}
 				</div>
-				<button onClick={nextImage} className="p-3 rounded-full bg-white/5 hover:bg-white/20 text-white transition-colors border border-white/10"><FaChevronRight size={16} /></button>
+
+				<button
+					onClick={nextImage}
+					className="p-2 md:p-3 rounded-full bg-white/5 hover:bg-white/20 text-white transition-colors border border-white/10 shrink-0"
+				>
+					<FaChevronRight size={14} className="md:w-4 md:h-4" />
+				</button>
 			</div>
 		</div>
 	);

@@ -49,7 +49,8 @@ const Projects: IProject[] = [
 				"/img/projects/advent_of_code/2025.png",
 				"/img/projects/advent_of_code/2024.png",
 				"/img/projects/advent_of_code/2015.png"
-			]
+			],
+			version: "3.10.0",
 		}
 	},
 	{
@@ -87,7 +88,8 @@ const Projects: IProject[] = [
 				"/img/projects/EpicubeSolver/View.png",
 				"/img/projects/EpicubeSolver/Shuffle.png",
 				"/img/projects/EpicubeSolver/Solve.png",
-			]
+			],
+			version: "1.0.0"
 		}
 	},
 	{
@@ -119,7 +121,8 @@ const Projects: IProject[] = [
 				"Édition de ligne et curseur",
 				"Raccourcis (Ctrl+A, Ctrl+E, Ctrl+K...)"
 			],
-			gallery: []
+			gallery: [],
+			version: "1.0.0"
 		}
 	},
 	{
@@ -155,7 +158,8 @@ const Projects: IProject[] = [
 				"Gestion d'erreurs (Exceptions custom)",
 				"Persistance fichier (.papaya)"
 			],
-			gallery: []
+			gallery: [],
+			version: "1.0.0"
 		}
 	},
 	{
@@ -191,7 +195,8 @@ const Projects: IProject[] = [
 				"Structure de données dynamique",
 				"API style Objet en C"
 			],
-			gallery: []
+			gallery: [],
+			version: "1.0.0"
 		}
 	},
 	{
@@ -222,7 +227,8 @@ const Projects: IProject[] = [
 				"Insertion triée (Custom Compare)",
 				"Sélection aléatoire d'éléments"
 			],
-			gallery: []
+			gallery: [],
+			version: "1.0.0"
 		}
 	},
 	{
@@ -256,7 +262,8 @@ const Projects: IProject[] = [
 				"Optimisation Lazy Loading",
 				"Accès par Dot-Notation (key.sub.val)"
 			],
-			gallery: []
+			gallery: [],
+			version: "1.0.0"
 		}
 	},
 	{
@@ -295,7 +302,8 @@ const Projects: IProject[] = [
 				"/img/projects/WebTools/password_checker.png",
 				"/img/projects/WebTools/home.png",
 				"/img/projects/WebTools/alphabetical_order.png",
-			]
+			],
+			version: "1.0.0"
 		}
 	},
 	{
@@ -331,7 +339,8 @@ const Projects: IProject[] = [
 			gallery: [
 				"/img/projects/Raycaster/2D.png",
 				"/img/projects/Raycaster/3D.png"
-			]
+			],
+			version: "1.0.0"
 		}
 	},
 	{
@@ -371,7 +380,8 @@ const Projects: IProject[] = [
 				"/img/projects/TicTacToeBot/Win.png",
 				"/img/projects/TicTacToeBot/Lose.png",
 				"/img/projects/TicTacToeBot/Equal.png"
-			]
+			],
+			version: "1.0.0"
 		}
 	}
 ];

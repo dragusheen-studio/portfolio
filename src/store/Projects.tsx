@@ -104,7 +104,8 @@ function _formatJsonToProject(jsonContent: any, meta: IRepoCacheMeta): IProject 
 			problem: d.problem || "",
 			solution: d.solution || "",
 			features: Array.isArray(d.features) ? d.features : [],
-			gallery: formatGallery(d.gallery)
+			gallery: formatGallery(d.gallery),
+			version: d.version || "0.0.0"
 		};
 	};
 

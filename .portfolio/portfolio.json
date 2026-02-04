@@ -45,7 +45,8 @@
             "Design Responsive & Dark Mode"
         ],
         "gallery": [
-            "./home.png"
+            "./home.png",
+            "./project_grid.png"
         ],
         "version": "2.0.0"
     }

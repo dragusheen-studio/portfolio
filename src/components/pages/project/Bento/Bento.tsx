@@ -8,7 +8,7 @@
 
 
 /* ----- IMPORTS ----- */
-import { FaBuilding, FaUserTie, FaClock, FaStar, FaHistory } from "react-icons/fa";
+import { FaBuilding, FaUserTie, FaClock, FaStar, FaHistory, FaTag } from "react-icons/fa";
 import type { IProject } from "@/types/Project";
 import ProjectBentoCard from "./Card";
 
@@ -64,14 +64,17 @@ function ProjectBento({ project }: ProjectBentoProps) {
 						/>
 					</div>
 
-					<div className="col-span-2 md:col-span-1">
-						<ProjectBentoCard
-							icon={FaHistory}
-							title="Dernier Push"
-							value={formatDate(project.last_push)}
-							subValue="Branche principale"
-						/>
-					</div>
+					<ProjectBentoCard
+						icon={FaHistory}
+						title="Dernier Push"
+						value={formatDate(project.last_push)}
+					/>
+
+					<ProjectBentoCard
+						icon={FaTag}
+						title="Version"
+						value={project.details.version}
+					/>
 				</div>
 			</div>
 		</section>

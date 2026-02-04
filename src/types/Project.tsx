@@ -32,6 +32,7 @@ interface IProjectDetails {
 	solution: string;
 	features: string[];
 	gallery: string[];
+	version: string;
 }
 
 interface IProject {

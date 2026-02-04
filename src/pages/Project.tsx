@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProjectHero from "@/components/pages/project/Hero/Hero";
 import ProjectBento from "@/components/pages/project/Bento/Bento";
-import ProjectGallery from "@/components/pages/project/Gallery";
+import ProjectGallery from "@/components/pages/project/Gallery/Gallery";
 import ProjectNavigation from "@/components/pages/project/Navigation/Navigation";
 import ProjectStory from "@/components/pages/project/Story/Project";
 import NotFoundPage from "@/pages/NotFound";

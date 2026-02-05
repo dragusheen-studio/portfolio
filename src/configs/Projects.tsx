@@ -383,7 +383,45 @@ const Projects: IProject[] = [
 			],
 			version: "1.0.0"
 		}
-	}
+	},
+	{
+		id: 0,
+		github_url: "https://github.com/SedNorma",
+		stars: 0,
+		last_push: "2025-02-05T12:00:00Z",
+		title: "SedNorma",
+		subtitle: "L'IA au service de la conformité des Bâtiments.",
+		description: "Co-fondation d'une startup LegalTech. Développement d'une IA générative capable de démystifier les normes de construction (incendie, élec, accessibilité, etc.) pour aider les propriétaires d'ERP à sécuriser leurs établissements simplement.",
+		image: "/img/projects/SedNorma/Logo.png",
+		tags: [
+			{ name: "CTO", important: true },
+			{ name: "LegalTech", important: true },
+			{ name: "NLP / LLM", important: true },
+			{ name: "Python", important: true },
+			{ name: "SaaS", important: false },
+			{ name: "Entrepreneuriat", important: false }
+		],
+		links: [
+		],
+		featured: true,
+		details: {
+			role: "Co-founder & CTO",
+			status: "En développement",
+			problem: "En France, 70% des Établissements Recevant du Public (ERP) ne sont pas aux normes. La cause ? Des textes de loi obscurs, éparpillés et incompréhensibles pour les non-initiés, rendant la mise en conformité longue, coûteuse et anxiogène.",
+			solution: "Développement d'un moteur d'IA spécialisé entraîné sur le Code de la Construction et les arrêtés préfectoraux. SedNorma 'vulgarise' le droit : l'utilisateur décrit son local, et l'IA génère un plan d'action clair, priorisé et intelligible pour respecter les des différentes normes de conformités.",
+			features: [
+				"Traducteur Juridique (Vulgarisation)",
+				"Diagnostic de conformité IA",
+				"Veille réglementaire automatisée",
+				"Génération de plans d'action"
+			],
+			gallery: [
+				"/img/projects/SedNorma/login.png",
+				"/img/projects/SedNorma/documents.png",
+			],
+			version: "0.1.0-alpha"
+		}
+	},
 ];
 
 /* ----- FUNCTION ----- */

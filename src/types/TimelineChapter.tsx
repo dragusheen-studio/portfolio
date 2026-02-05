@@ -8,6 +8,11 @@
 
 
 /* ----- TYPE ----- */
+interface ITimelineChapterLink {
+    label: string;
+    url: string;
+}
+
 interface ITimelineChapter {
     id: number;
     navLabel: string;
@@ -18,8 +23,8 @@ interface ITimelineChapter {
     quote: string;
     tags: string[];
     theme: string;
-    align: "left" | "right";
     image: string;
+    links: ITimelineChapterLink[];
 }
 
 

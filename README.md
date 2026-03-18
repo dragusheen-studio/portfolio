@@ -1,73 +1,120 @@
-# React + TypeScript + Vite
+# 🌌 Dragusheen Studio - Portfolio 2026
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenue sur le code source de mon portfolio interactif. Plus qu'un simple CV en ligne, ce projet est un "Studio" démontrant ma double compétence : l'exigence de l'architecture logicielle couplée à l'esthétique du design UI/UX et du motion design.
 
-Currently, two official plugins are available:
+## ✨ Fonctionnalités Clés
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Glassmorphism & UI Moderne** : Thème sombre immersif avec effets de flou, gradients animés et bordures lumineuses.
+- **Animations Avancées** : Intégration profonde de `framer-motion` pour des transitions de pages fluides, des révélations au scroll et des composants interactifs complexes (comme le `LiveRender`).
+- **Génération Dynamique** : Récupération en temps réel de mes projets GitHub via l'API officielle, avec un système de cache et de tri intelligent.
+- **Sécurité** : Appels API GitHub masqués derrière une **Netlify Serverless Function** pour ne jamais exposer de tokens côté client.
+- **Architecture Scalable** : Séparation stricte des données (dossier `configs/`), de la logique (`services/`, `store/`) et de l'UI (`components/`).
 
-## React Compiler
+## 🛠️ Stack Technique
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **Cœur** : `React 19` + `TypeScript`
+- **Build Tool** : `Vite 8` (avec SWC)
+- **Styling** : `Tailwind CSS v4` (Nouveau moteur unifié)
+- **Animations** : `Framer Motion 12`
+- **Routing** : `React Router v7`
+- **Déploiement & Backend** : `Netlify` (Hébergement + Edge Functions)
+- **Package Manager** : `pnpm`
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Installation & Démarrage local
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prérequis
+- `Node.js` (v22 recommandée, le script de démarrage le gère automatiquement via NVM si installé).
+- `pnpm` (installable via `npm install -g pnpm`).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Cloner le projet
+```bash
+git clone https://github.com/dragusheen-studio/portfolio.git
+cd portfolio
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Installer les dépendances
+```bash
+pnpm install
 ```
+
+### 3. Lancer le serveur de développement
+Le projet inclut un script bash personnalisé qui vérifie la version de Node, la présence de pnpm, la disponibilité du port, et ouvre un terminal dédié :
+
+```bash
+bash ./bin/start
+```
+
+*Alternativement, vous pouvez utiliser la commande standard :*
+```bash
+pnpm dev
+```
+
+Le site sera accessible sur `http://localhost:5173` (ou le port spécifié par Vite).
+
+---
+
+## 🔐 Configuration des Variables d'Environnement (API GitHub)
+
+Pour que la récupération automatique des projets GitHub (`store/Projects.tsx`) fonctionne sans être bloquée par les limites de l'API publique (Rate Limit), vous devez configurer un token.
+
+**⚠️ Ne placez jamais le token dans le code source mais dans un fichier `.env` préfixé par `VITE_`.**
+
+1. Générez un **Personal Access Token (classic)** sur GitHub (avec les droits de lecture basiques).
+2. Sur votre interface **Netlify** (Site settings > Environment variables), ajoutez une variable nommée exactement :
+   - Clé : `GITHUB_TOKEN`
+   - Valeur : `ghp_votreTokenSecretIci...`
+
+La Netlify Function (`netlify/functions/github-api.js`) se chargera d'utiliser ce token côté serveur de manière sécurisée. En développement local via Netlify CLI, vous pouvez utiliser `netlify dev` pour injecter cette variable.
+
+---
+
+## 📂 Architecture du Projet
+
+```text
+src/
+├── components/       # Composants réutilisables (Layout, UI, Pages)
+├── configs/          # Données statiques (Projets, Timeline, Liens) -> Facile à mettre à jour !
+├── pages/            # Vues principales routées
+├── services/         # Logique métier (Fetch API, Typewriter, Scroll)
+├── store/            # Gestion d'état et cache (Projets GitHub)
+├── style/            # Fichiers CSS globaux et configuration Tailwind
+└── types/            # Définitions des interfaces TypeScript
+```
+
+---
+
+## ✏️ Mettre à jour le contenu
+
+L'architecture est pensée pour que le contenu puisse être mis à jour sans toucher à la structure complexe des composants React.
+Allez simplement dans le dossier `src/configs/` :
+
+- `Projects.tsx` : Ajoutez ou modifiez vos projets manuels (ceux non récupérés via GitHub).
+- `TimelineChapter.tsx` : Ajoutez de nouvelles expériences scolaires ou professionnelles.
+- `ContactLinks.tsx` : Modifiez vos réseaux sociaux, numéros, et emails.
+- `PageData.tsx` : Gérez l'arborescence des pages et la NavBar.
+
+---
+
+## 🚀 Déploiement
+
+Ce projet est optimisé pour un déploiement continu sur **Netlify**.
+
+1. Connectez votre dépôt GitHub à Netlify.
+2. Paramètres de Build :
+   - Build command : `pnpm run build`
+   - Publish directory : `dist`
+3. Assurez-vous d'avoir ajouté la variable d'environnement `GITHUB_TOKEN`.
+4. Le fichier `public/_redirects` (déjà inclus) gère le routage côté client pour éviter les erreurs 404 lors du rafraîchissement d'une page.
+
+---
+
+## 👨‍💻 Auteur
+
+**Nathan TIROLF**
+- Email : nathan.tirolf@epitech.eu
+- LinkedIn : [nathan-tirolf](https://www.linkedin.com/in/nathan-tirolf/)
+- GitHub : [@Dragusheen](https://github.com/Dragusheen)
+
+*(„• ֊ •„)❤  <  Have a good day !*

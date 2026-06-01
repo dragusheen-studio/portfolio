@@ -9,7 +9,7 @@
 
 /* ----- IMPORTS ----- */
 import { fetchGet } from "@/services/fetch";
-import type { IProject, IProjectDetails, IProjectLink, IProjectTag } from "@/types/Project";
+import type { IProject, IProjectLink, IProjectTag } from "@/types/Project";
 
 
 /* ----- CONSTANTS ----- */
@@ -17,7 +17,6 @@ const CMS_OWNER = "dragusheen-studio";
 const CMS_REPO = "portfolio-cms";
 const CMS_BRANCH = "main";
 const CMS_ROOT_URL = `https://api.github.com/repos/${CMS_OWNER}/${CMS_REPO}/contents/`;
-
 const EXPIRED_TIME = 1000 * 60 * 60;
 
 
@@ -26,6 +25,9 @@ let lastStorageFetch: number = 0;
 let isFetching: boolean = false;
 
 const projectStorage: Map<number, IProject> = new Map();
+
+type ProjectListener = (projects: IProject[]) => void;
+const listeners: Set<ProjectListener> = new Set();
 
 
 /* ----- PRIVATE ----- */
@@ -44,16 +46,11 @@ function _b64DecodeUnicode(str: string) {
 
 function _resolveAssetUrl(path: string | undefined, projectName: string): string {
 	if (!path) return "https://placehold.co/1920x1080/1e1e1e/white?text=No+Image";
-
-	if (path.startsWith("http") || path.startsWith("data:"))
-		return path;
+	if (path.startsWith("http") || path.startsWith("data:")) return path;
 
 	let cleanFilename = path;
-	if (path.startsWith("./")) {
-		cleanFilename = path.slice(2);
-	} else if (path.startsWith("/")) {
-		cleanFilename = path.slice(1);
-	}
+	if (path.startsWith("./")) cleanFilename = path.slice(2);
+	else if (path.startsWith("/")) cleanFilename = path.slice(1);
 
 	return `https://cdn.jsdelivr.net/gh/${CMS_OWNER}/${CMS_REPO}@${CMS_BRANCH}/${projectName}/${cleanFilename}`;
 }
@@ -67,50 +64,20 @@ function _generateHashId(str: string): number {
 	return Math.abs(hash);
 }
 
-function _formatJsonToProject(
-	jsonContent: any,
-	projectName: string,
-	projectId: number,
-	targetStars: number,
-	targetLastPush: string,
-	targetGithubUrl: string
-): IProject {
+function _formatJsonToProject(jsonContent: any, projectName: string, projectId: number, targetStars: number, targetLastPush: string, targetGithubUrl: string): IProject {
 	const formatTags = (tags: any[]): IProjectTag[] => {
 		if (!Array.isArray(tags)) return [];
-		return tags.map(t => ({
-			name: t.name || "Unknown",
-			important: t.important || false
-		}));
+		return tags.map(t => ({ name: t.name || "Unknown", important: t.important || false }));
 	};
 
 	const formatLinks = (links: any[]): IProjectLink[] => {
 		if (!Array.isArray(links)) return [];
-		return links.map(l => ({
-			name: l.name || "Link",
-			url: l.url || "#"
-		}));
+		return links.map(l => ({ name: l.name || "Link", url: l.url || "#" }));
 	};
 
 	const formatGallery = (images: any[]): string[] => {
 		if (!Array.isArray(images)) return [];
 		return images.map(img => _resolveAssetUrl(img, projectName));
-	};
-
-	const formatDetails = (d: any): IProjectDetails => {
-		return {
-			role: d.role || "Developer",
-			client: d.client ? {
-				name: d.client.name,
-				url: d.client.url,
-				description: d.client.description
-			} : undefined,
-			status: d.status || "Terminé",
-			problem: d.problem || "",
-			solution: d.solution || "",
-			features: Array.isArray(d.features) ? d.features : [],
-			gallery: formatGallery(d.gallery),
-			version: d.version || "0.0.0"
-		};
 	};
 
 	return {
@@ -125,8 +92,31 @@ function _formatJsonToProject(
 		image: _resolveAssetUrl(jsonContent.image, projectName),
 		links: formatLinks(jsonContent.links),
 		featured: jsonContent.featured || false,
-		details: formatDetails(jsonContent.details || {})
+		details: {
+			role: jsonContent.details?.role || "Developer",
+			client: jsonContent.details?.client ? {
+				name: jsonContent.details.client.name,
+				url: jsonContent.details.client.url,
+				description: jsonContent.details.client.description
+			} : undefined,
+			status: jsonContent.details?.status || "Terminé",
+			problem: jsonContent.details?.problem || "",
+			solution: jsonContent.details?.solution || "",
+			features: Array.isArray(jsonContent.details?.features) ? jsonContent.details.features : [],
+			gallery: formatGallery(jsonContent.details?.gallery),
+			version: jsonContent.details?.version || "0.0.0"
+		}
 	};
+}
+
+function _notifyListeners() {
+	const allProjects = Array.from(projectStorage.values());
+	allProjects.sort((a, b) => {
+		const dateA = a.last_push ? new Date(a.last_push).getTime() : 0;
+		const dateB = b.last_push ? new Date(b.last_push).getTime() : 0;
+		return dateB - dateA;
+	});
+	listeners.forEach(listener => listener([...allProjects]));
 }
 
 
@@ -137,11 +127,12 @@ async function _fetchCmsProjects() {
 		if (!response.ok) throw new Error(`CMS API Error: ${response.status}`);
 
 		const contents = await response.json();
-
 		const projectFolders = contents.filter((item: any) => item.type === "dir");
 
-		for (const folder of projectFolders)
-			await _fetchSingleCmsProject(folder.name);
+		await Promise.all(
+			projectFolders.map((folder: any) => _fetchSingleCmsProject(folder.name))
+		);
+
 	} catch (error) {
 		console.error("Error fetching CMS contents: ", error);
 	}
@@ -179,6 +170,8 @@ async function _fetchSingleCmsProject(projectName: string) {
 
 		projectStorage.set(project.id, project);
 
+		_notifyListeners();
+
 	} catch (error) {
 		console.warn(`Impossible de charger la config pour le projet ${projectName}`, error);
 	}
@@ -194,18 +187,27 @@ async function _checkExpired() {
 	if (isEmpty || isExpired) {
 		isFetching = true;
 		projectStorage.clear();
+		_notifyListeners();
+
 		await _fetchCmsProjects();
+
 		lastStorageFetch = Date.now();
 		isFetching = false;
+		_notifyListeners();
 	}
 }
 
 
 /* ----- PUBLIC FUNCTION ----- */
+function subscribeToProjects(listener: ProjectListener) {
+	listeners.add(listener);
+	_notifyListeners();
+	return () => listeners.delete(listener);
+}
+
 async function getProjects(): Promise<IProject[]> {
 	await _checkExpired();
 	const allProjects = Array.from(projectStorage.values());
-
 	allProjects.sort((a, b) => {
 		const dateA = a.last_push ? new Date(a.last_push).getTime() : 0;
 		const dateB = b.last_push ? new Date(b.last_push).getTime() : 0;
@@ -221,7 +223,6 @@ async function getProject(id: number): Promise<IProject | undefined> {
 
 async function getProjectNeighbors(currentProject: IProject) {
 	const allProjects = await getProjects();
-
 	const total = allProjects.length;
 	if (total <= 1) return null;
 
@@ -244,4 +245,4 @@ async function getProjectByTitle(title: string): Promise<number | undefined> {
 	return project?.id;
 }
 
-export { getProjects, getProject, getProjectNeighbors, getProjectByTitle };
+export { getProjects, getProject, getProjectNeighbors, getProjectByTitle, subscribeToProjects };

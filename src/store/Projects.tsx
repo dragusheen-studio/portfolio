@@ -23,10 +23,11 @@ const EXPIRED_TIME = 1000 * 60 * 60;
 /* ----- STORAGE STATE ----- */
 let lastStorageFetch: number = 0;
 let isFetching: boolean = false;
+let isFetchEnded: boolean = false;
 
 const projectStorage: Map<number, IProject> = new Map();
 
-type ProjectListener = (projects: IProject[]) => void;
+type ProjectListener = (projects: IProject[], isLoading: boolean) => void;
 const listeners: Set<ProjectListener> = new Set();
 
 
@@ -116,7 +117,7 @@ function _notifyListeners() {
 		const dateB = b.last_push ? new Date(b.last_push).getTime() : 0;
 		return dateB - dateA;
 	});
-	listeners.forEach(listener => listener([...allProjects]));
+	listeners.forEach(listener => listener([...allProjects], !isFetchEnded));
 }
 
 
@@ -129,9 +130,15 @@ async function _fetchCmsProjects() {
 		const contents = await response.json();
 		const projectFolders = contents.filter((item: any) => item.type === "dir");
 
-		await Promise.all(
+		isFetchEnded = false;
+		_notifyListeners();
+
+		Promise.all(
 			projectFolders.map((folder: any) => _fetchSingleCmsProject(folder.name))
-		);
+		).then(() => {
+			isFetchEnded = true;
+			_notifyListeners();
+		});
 
 	} catch (error) {
 		console.error("Error fetching CMS contents: ", error);

@@ -10,7 +10,6 @@
 /* ----- IMPORTS ----- */
 import { fetchGet } from "@/services/fetch";
 import type { IProject, IProjectDetails, IProjectLink, IProjectTag } from "@/types/Project";
-import { GetProjects } from "@/configs/Projects";
 
 
 /* ----- CONSTANTS ----- */
@@ -134,20 +133,12 @@ function _formatJsonToProject(
 /* ----- FETCH ----- */
 async function _fetchCmsProjects() {
 	try {
-		console.log("A");
 		const response = await fetchGet(CMS_ROOT_URL);
-		console.log("B");
 		if (!response.ok) throw new Error(`CMS API Error: ${response.status}`);
-		console.log("C");
 
-		console.log(response);
 		const contents = await response.json();
-		console.log("D");
-		console.log(contents);
-		console.log("E");
 
 		const projectFolders = contents.filter((item: any) => item.type === "dir");
-		console.log("F");
 
 		for (const folder of projectFolders)
 			await _fetchSingleCmsProject(folder.name);
@@ -213,8 +204,7 @@ async function _checkExpired() {
 /* ----- PUBLIC FUNCTION ----- */
 async function getProjects(): Promise<IProject[]> {
 	await _checkExpired();
-	const githubProjects = Array.from(projectStorage.values());
-	const allProjects = [...githubProjects, ...GetProjects()];
+	const allProjects = Array.from(projectStorage.values());
 
 	allProjects.sort((a, b) => {
 		const dateA = a.last_push ? new Date(a.last_push).getTime() : 0;
@@ -225,8 +215,6 @@ async function getProjects(): Promise<IProject[]> {
 }
 
 async function getProject(id: number): Promise<IProject | undefined> {
-	if (id < 0) return GetProjects().find(p => p.id === id);
-
 	await _checkExpired();
 	return projectStorage.get(id);
 }

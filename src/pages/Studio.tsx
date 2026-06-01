@@ -9,49 +9,57 @@
 
 /* ----- IMPORTS ----- */
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import FeaturedSection from "@/components/pages/studio/Grid/Featured/FeaturedProject";
 import ProjectsGrid from "@/components/pages/studio/Grid/ProjectsGrid";
 import ProjectsHero from "@/components/pages/studio/Hero";
 import Loader from "@/components/ui/Loader";
 import type { IProject } from "@/types/Project";
-import { getProjects } from "@/store/Projects";
+import { getProjects, subscribeToProjects } from "@/store/Projects";
+import { FaGithub } from "react-icons/fa";
 
 
 /* ----- COMPONENT ----- */
 function Studio() {
 	const [projects, setProjects] = useState<IProject[]>([]);
-	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [isSyncing, setIsSyncing] = useState<boolean>(false);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				setProjects(await getProjects());
-			} catch (error) {
-				console.error("Erreur chargement projets:", error);
-			} finally {
-				setIsLoading(false);
-			}
+		const unsubscribe = subscribeToProjects((updatedProjects, isLoadingProjects) => {
+			setProjects(updatedProjects);
+			setIsSyncing(isLoadingProjects);
+		});
+
+		const triggerFetch = async () => {
+			await getProjects();
 		};
 
-		fetchData();
+		triggerFetch();
+
+		return () => {
+			unsubscribe();
+		};
 	}, []);
 
 	const featuredProjects = projects.filter(p => p.featured);
 
 	return (
-		<div className="w-full flex flex-col min-h-screen">
+		<div className="w-full flex flex-col min-h-screen relative">
 			<ProjectsHero />
 
-			{isLoading ? (
+			{projects.length <= 0 ? (
 				<Loader />
 			) : (
-				<>
+				projects.length > 0 &&
+				<div className="flex flex-col min-h-[50vh]">
 					{featuredProjects.length > 0 && (
 						<FeaturedSection projects={featuredProjects} />
 					)}
 
-					<ProjectsGrid projects={projects} />
-				</>
+					{projects.length > 0 && (
+						<ProjectsGrid projects={projects} isSyncing={isSyncing} />
+					)}
+				</div>
 			)}
 		</div>
 	);

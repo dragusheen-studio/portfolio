@@ -9,14 +9,12 @@
 
 /* ----- IMPORTS ----- */
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import FeaturedSection from "@/components/pages/studio/Grid/Featured/FeaturedProject";
 import ProjectsGrid from "@/components/pages/studio/Grid/ProjectsGrid";
 import ProjectsHero from "@/components/pages/studio/Hero";
 import Loader from "@/components/ui/Loader";
 import type { IProject } from "@/types/Project";
 import { getProjects, subscribeToProjects } from "@/store/Projects";
-import { FaGithub } from "react-icons/fa";
 
 
 /* ----- COMPONENT ----- */
